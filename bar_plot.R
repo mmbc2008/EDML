@@ -31,6 +31,6 @@ valence[10, 1] = "Mandarin"
 valence[11, 1] = "Mandarin"
 valence[12, 1] = "Mandarin"
 
-ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree)) + 
+valence %>% ggplot(aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Valence") +
 scale_fill_manual(values=c("#4019FF", "#D400FF", "#FF1919", "#FF9933"))

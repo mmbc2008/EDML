@@ -14,10 +14,16 @@ library(lubridate)
 library(tidyverse)
 ```
 
-Column
+Column {.tabset}
 -----------------------------------------------------------------------
 
 ### Chart A
+
+```{r}
+
+```
+
+### Chart AA
 
 ```{r}
 
