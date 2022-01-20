@@ -1,0 +1,41 @@
+---
+title: "Languages and Music Perception"
+output: 
+  flexdashboard::flex_dashboard:
+  storyboard: true
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(lubridate)
+library(tidyverse)
+```
+
+Column
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+
+```
+
+Column
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+
+
