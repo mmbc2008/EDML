@@ -60,17 +60,30 @@ scale_fill_manual(values=c("#4019FF", "#D400FF", "#FF1919", "#FF9933"))
 ### Chart AA
 
 ```{r}
+Dutch = length(which(DSEML_results$dutch == 5)) + length(which(DSEML_results$dutch == 6))
+English = length(which(DSEML_results$english == 5)) + length(which(DSEML_results$english == 6))
+Hindi = length(which(DSEML_results$hindi == 5)) + length(which(DSEML_results$hindi == 6))
+Mandarin = length(which(DSEML_results$mandarin == 5)) + length(which(DSEML_results$mandarin == 6))
+filtering <- filter(DSEML_results, dutch != 5, dutch != 6, english != 5, english != 6, hindi != 5, hindi != 6, mandarin !=5, mandarin != 6)
+Other = length(filtering$dutch)
+
+pie_chart <- data.frame("languages" = c('Dutch', 'English', 'Mandarin', 'Hindi', 'Other'), "amount" = c(Dutch, English, Mandarin, Hindi, Other))
+
+ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) + geom_text(aes(label = paste0(amount)), position = position_stack(vjust=0.5)) +
+  labs(x = NULL, y = NULL, fill = NULL)
 
 ```
 
 Column
 -----------------------------------------------------------------------
 
-### Chart B
 
-```{r}
+### Explanation of pie chart
 
-```
+#### this is a header
+There should come some text hear explaining the pie chart on the left, which explains that the chart shows the number of people who should be able to understand the language (a.k.a they filled in a 5 or 6) and it also counts the bilinguals multiple times, and 'other' is the people that didn't say they had a profiency of at least 5 of any of the languages.
 
 ### Chart C
 
