@@ -16,6 +16,17 @@ library(readxl)
 library(VennDiagram)
 DSEML_results <- read_excel("DSEML results.xlsx")
 ```
+Intro 
+=====================================================
+Column {data-width=750}
+----------------------------------------------------
+Here some valueboxes for the number of participants, number of countries, and the number of songs
+
+Column {data-width=250}
+--------------------------------------------------
+### Text
+A short explanation of our research in general, so like the valence and stuff
+
 Results
 ===============================================
 
