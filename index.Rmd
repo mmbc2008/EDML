@@ -21,28 +21,27 @@ Intro
 
 Column {Data-width = 650}
 ----------------------------------------------------
-### Articles per Day
+### Participants
 
 ```{r}
-articles <- 15
-valueBox(articles, icon = "fa-pencil")
+participants = length(DSEML_results$ResponseId)
+valueBox(participants, icon="fas fa-users", color = "green")
 ```
 
-### Comments per Day
+### Countries
 
 ```{r}
-comments <- 6
-valueBox(comments, icon = "fa-comments")
+countries = n_distinct(DSEML_results$country)
+valueBox(countries, icon = "fas fa-plane", color = "red")
 ```
 
-### Spam per Day
+### Songs
 
 ```{r}
-spam <- 9
-valueBox(spam, 
-         icon = "fa-trash",
-         color = ifelse(spam > 10, "warning", "primary"))
-# Here some valueboxes for the number of participants, number of countries, and the number of songs
+songs <- 12
+valueBox(songs, 
+         icon = "fas fa-music",
+         color =  "primary")
 ```
 
 Column {data-width=350}
