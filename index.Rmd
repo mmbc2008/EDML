@@ -18,11 +18,34 @@ DSEML_results <- read_excel("DSEML results.xlsx")
 ```
 Intro 
 =====================================================
-Column {data-width=750}
-----------------------------------------------------
-Here some valueboxes for the number of participants, number of countries, and the number of songs
 
-Column {data-width=250}
+Column {Data-width = 650}
+----------------------------------------------------
+### Articles per Day
+
+```{r}
+articles <- 15
+valueBox(articles, icon = "fa-pencil")
+```
+
+### Comments per Day
+
+```{r}
+comments <- 6
+valueBox(comments, icon = "fa-comments")
+```
+
+### Spam per Day
+
+```{r}
+spam <- 9
+valueBox(spam, 
+         icon = "fa-trash",
+         color = ifelse(spam > 10, "warning", "primary"))
+# Here some valueboxes for the number of participants, number of countries, and the number of songs
+```
+
+Column {data-width=350}
 --------------------------------------------------
 ### Text
 Last year’s Spotify Wrapped revealed that the top three globally most streamed artists are, in correct order: Bad Bunny, Taylor Swift and BTS (Spotify, 2021). Interestingly, not only are all three artists based in different continents, two of these artists also do not predominantly perform in the English language. Given that more than half of Spotify’s monthly active users come from Western English-speaking countries (Dean, 2021), this goes to show that music indeed transcends language, such that people all around the world can enjoy songs in foreign languages. The question remains, however, how differently do people perceive songs in a non-native language compared to songs in their native language?
@@ -30,7 +53,7 @@ Last year’s Spotify Wrapped revealed that the top three globally most streamed
 Taking advantage of the research group’s diverse cultural backgrounds, an online experiment was designed to investigate the effect of one’s native language on the perception of mood in songs. Native Dutch, Mandarin, Hindi and English speakers were the target populations of this study. For each language, 3 songs were selected according to the valence endpoint values of Spotify API - one with low valence (0.2), one with middle valence (0.5) and one with high valence (0.8). Songs with low valence values represented songs with a sad mood, whereas songs with high valence values represented songs with a happy mood. Songs with middle valence values represented neutral songs that are neither sad nor happy. In total, 12 songs were selected for the experiment. Participants were exposed to 15-second snippets of all 12 songs and rated their perception of the mood (positive vs negative) in the songs.
 
 
-Results
+Valence {data-navmenu=Results}
 ===============================================
 
 Column
@@ -215,8 +238,11 @@ geom_bar(position="dodge", stat="identity") + ggtitle("Hindi Valence") +
 scale_fill_manual(values=c("#4019FF", "#D400FF"))
 ```
 
-Other
+Participants {data-navmenu=Results}
 ======================================================
+Column
+----------------------------------------------------
+
 ### Language distribution
 
 ```{r}
@@ -235,6 +261,9 @@ ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
   labs(x = NULL, y = NULL, fill = NULL)
 
 ```
+Column
+----------------------------------------------------
+
 ### Explanation of pie chart
 
 #### Figure X
