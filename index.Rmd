@@ -25,7 +25,10 @@ Here some valueboxes for the number of participants, number of countries, and th
 Column {data-width=250}
 --------------------------------------------------
 ### Text
-A short explanation of our research in general, so like the valence and stuff
+Last year’s Spotify Wrapped revealed that the top three globally most streamed artists are, in correct order: Bad Bunny, Taylor Swift and BTS (Spotify, 2021). Interestingly, not only are all three artists based in different continents, two of these artists also do not predominantly perform in the English language. Given that more than half of Spotify’s monthly active users come from Western English-speaking countries (Dean, 2021), this goes to show that music indeed transcends language, such that people all around the world can enjoy songs in foreign languages. The question remains, however, how differently do people perceive songs in a non-native language compared to songs in their native language?
+
+Taking advantage of the research group’s diverse cultural backgrounds, an online experiment was designed to investigate the effect of one’s native language on the perception of mood in songs. Native Dutch, Mandarin, Hindi and English speakers were the target populations of this study. For each language, 3 songs were selected according to the valence endpoint values of Spotify API - one with low valence (0.2), one with middle valence (0.5) and one with high valence (0.8). Songs with low valence values represented songs with a sad mood, whereas songs with high valence values represented songs with a happy mood. Songs with middle valence values represented neutral songs that are neither sad nor happy. In total, 12 songs were selected for the experiment. Participants were exposed to 15-second snippets of all 12 songs and rated their perception of the mood (positive vs negative) in the songs.
+
 
 Results
 ===============================================
@@ -234,5 +237,8 @@ ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
 ```
 ### Explanation of pie chart
 
-#### this is a header
-There should come some text hear explaining the pie chart on the left, which explains that the chart shows the number of people who should be able to understand the language (a.k.a they filled in a 5 or 6) and it also counts the bilinguals multiple times, and 'other' is the people that didn't say they had a profiency of at least 5 of any of the languages.
+#### Figure X
+The distribution of participants who have at least full professional proficiency in the languages tested in the experiment. 
+
+Note. Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
+
