@@ -2,7 +2,7 @@
 title: "Languages and Music Perception"
 output: 
   flexdashboard::flex_dashboard:
-  storyboard: true
+    storyboard: true
 ---
 
 ```{r setup, include=FALSE}
@@ -16,11 +16,13 @@ library(readxl)
 library(VennDiagram)
 DSEML_results <- read_excel("DSEML results.xlsx")
 ```
-Intro 
+Intro {data-orientation=rows}
 =====================================================
 
-Column {Data-width = 650}
+
+Row {Data-height = 350}
 ----------------------------------------------------
+
 ### Participants
 
 ```{r}
@@ -44,9 +46,13 @@ valueBox(songs,
          color =  "primary")
 ```
 
-Column {data-width=350}
+Row {data-height=650}
+----------------------------------------------------
+
+Column {.sidebar data-width=350}
 --------------------------------------------------
-### Text
+
+### Introduction
 Last year’s Spotify Wrapped revealed that the top three globally most streamed artists are, in correct order: Bad Bunny, Taylor Swift and BTS (Spotify, 2021). Interestingly, not only are all three artists based in different continents, two of these artists also do not predominantly perform in the English language. Given that more than half of Spotify’s monthly active users come from Western English-speaking countries (Dean, 2021), this goes to show that music indeed transcends language, such that people all around the world can enjoy songs in foreign languages. The question remains, however, how differently do people perceive songs in a non-native language compared to songs in their native language?
 
 Taking advantage of the research group’s diverse cultural backgrounds, an online experiment was designed to investigate the effect of one’s native language on the perception of mood in songs. Native Dutch, Mandarin, Hindi and English speakers were the target populations of this study. For each language, 3 songs were selected according to the valence endpoint values of Spotify API - one with low valence (0.2), one with middle valence (0.5) and one with high valence (0.8). Songs with low valence values represented songs with a sad mood, whereas songs with high valence values represented songs with a happy mood. Songs with middle valence values represented neutral songs that are neither sad nor happy. In total, 12 songs were selected for the experiment. Participants were exposed to 15-second snippets of all 12 songs and rated their perception of the mood (positive vs negative) in the songs.
@@ -130,7 +136,7 @@ Dutch_graph[6, 1] = "Non-native"
 
 ggplot(Dutch_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Dutch Valence") +
-scale_fill_manual(values=c("#4019FF", "#D400FF"))
+scale_fill_manual(values=c("#128A12", "#22CB22"))
 ```
 
 ### Mandarin Valence
@@ -165,7 +171,7 @@ Mand_graph[6, 1] = "Non-native"
 
 ggplot(Mand_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Mand Valence") +
-scale_fill_manual(values=c("#4019FF", "#D400FF"))
+scale_fill_manual(values=c("#128A12", "#22CB22"))
 ```
 
 ### English Valence
@@ -199,7 +205,7 @@ English_graph[6, 1] = "Non-native"
 
 ggplot(English_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("English Valence") +
-scale_fill_manual(values=c("#4019FF", "#D400FF"))
+scale_fill_manual(values=c("#128A12", "#22CB22"))
 ```
 
 ### Hindi Valence
@@ -234,13 +240,14 @@ Hindi_graph[6, 1] = "Non-native"
 
 ggplot(Hindi_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Hindi Valence") +
-scale_fill_manual(values=c("#4019FF", "#D400FF"))
+scale_fill_manual(values=c("#128A12", "#22CB22"))
 ```
 
 Participants {data-navmenu=Results}
 ======================================================
+
 Column
-----------------------------------------------------
+-------------------------------------------------------
 
 ### Language distribution
 
@@ -261,11 +268,11 @@ ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
 
 ```
 Column
-----------------------------------------------------
+-------------------------------------------------------
 
 ### Explanation of pie chart
 
-#### Figure X
+#### Figure Language Distribution
 The distribution of participants who have at least full professional proficiency in the languages tested in the experiment. 
 
 Note. Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
