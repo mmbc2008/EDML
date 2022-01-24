@@ -237,5 +237,8 @@ ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
 ```
 ### Explanation of pie chart
 
-#### this is a header
-There should come some text hear explaining the pie chart on the left, which explains that the chart shows the number of people who should be able to understand the language (a.k.a they filled in a 5 or 6) and it also counts the bilinguals multiple times, and 'other' is the people that didn't say they had a profiency of at least 5 of any of the languages.
+#### Figure X
+The distribution of participants who have at least full professional proficiency in the languages tested in the experiment. 
+
+Note. Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
+
