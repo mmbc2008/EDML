@@ -3,7 +3,7 @@ title: "Languages and Music Perception"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
-    theme: readable
+    theme: sandstone
 ---
 
 ```{r setup, include=FALSE}
