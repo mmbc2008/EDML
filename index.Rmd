@@ -35,7 +35,7 @@ valueBox(participants, icon="fas fa-users", color = "green")
 
 ```{r}
 countries = n_distinct(DSEML_results$country)
-valueBox(countries, icon = "fas fa-plane", color = "red")
+valueBox(countries, icon = "fas fa-plane", color = "cyan")
 ```
 
 ### Songs
@@ -100,7 +100,7 @@ valence[12, 1] = "Mandarin"
 
 ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Valence") +
-scale_fill_manual(values=c("#4019FF", "#D400FF", "#FF1919", "#FF9933"))
+scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56"))
 ```
 
 Column {.tabset}
@@ -137,7 +137,7 @@ Dutch_graph[6, 1] = "Non-native"
 
 ggplot(Dutch_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Dutch Valence") +
-scale_fill_manual(values=c("#128A12", "#22CB22"))
+scale_fill_manual(values=c("#93C54B", "#121909"))
 ```
 
 ### Mandarin Valence
@@ -172,7 +172,7 @@ Mand_graph[6, 1] = "Non-native"
 
 ggplot(Mand_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Mand Valence") +
-scale_fill_manual(values=c("#128A12", "#22CB22"))
+scale_fill_manual(values=c("#4BC5BA", "#091917"))
 ```
 
 ### English Valence
@@ -206,7 +206,7 @@ English_graph[6, 1] = "Non-native"
 
 ggplot(English_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("English Valence") +
-scale_fill_manual(values=c("#128A12", "#22CB22"))
+scale_fill_manual(values=c("#7D4BC5", "#100919"))
 ```
 
 ### Hindi Valence
@@ -241,7 +241,7 @@ Hindi_graph[6, 1] = "Non-native"
 
 ggplot(Hindi_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Hindi Valence") +
-scale_fill_manual(values=c("#128A12", "#22CB22"))
+scale_fill_manual(values=c("#C54B56", "#19090B"))
 ```
 
 Participants {data-navmenu=Results}
