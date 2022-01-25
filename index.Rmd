@@ -17,7 +17,7 @@ library(readxl)
 library(VennDiagram)
 DSEML_results <- read_excel("DSEML results.xlsx")
 ```
-Intro {data-orientation=rows}
+Home {data-orientation=rows}
 =====================================================
 
 
