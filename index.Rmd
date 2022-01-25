@@ -170,7 +170,7 @@ English_graph[6, 1] = "Non-native"
 
 ggplot(English_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("English Valence") +
-scale_fill_manual(values=c(""#4BC5BA", "#091917"))
+scale_fill_manual(values=c("#4BC5BA", "#091917"))
 ```
 ### Hindi Valence
 
