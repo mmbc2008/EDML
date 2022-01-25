@@ -28,14 +28,14 @@ Row {Data-height = 350}
 
 ```{r}
 participants = length(DSEML_results$ResponseId)
-valueBox(participants, icon="fas fa-users", color = "green")
+valueBox(participants, icon="fas fa-users", color = "#4BC5BA")
 ```
 
 ### Countries
 
 ```{r}
 countries = n_distinct(DSEML_results$country)
-valueBox(countries, icon = "fas fa-plane", color = "cyan")
+valueBox(countries, icon = "fas fa-plane", color = "#C54B56")
 ```
 
 ### Songs
@@ -44,7 +44,7 @@ valueBox(countries, icon = "fas fa-plane", color = "cyan")
 songs <- 12
 valueBox(songs, 
          icon = "fas fa-music",
-         color =  "primary")
+         color =  "#7D4BC5")
 ```
 
 Row {data-height=650}
