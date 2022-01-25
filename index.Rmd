@@ -139,6 +139,7 @@ ggplot(Dutch_graph, aes(fill=Languages, y=Values, x=Valence_degree)) +
 geom_bar(position="dodge", stat="identity") + ggtitle("Dutch Valence") +
 scale_fill_manual(values=c("#93C54B", "#121909"))
 ```
+
 ### English Valence
 ```{r}
 English_part <- filter(DSEML_results, english != 4, english != 3, english !=2, english != 1) %>%
@@ -172,8 +173,8 @@ ggplot(English_graph, aes(fill=Languages, y=Values, x=Valence_degree)) +
 geom_bar(position="dodge", stat="identity") + ggtitle("English Valence") +
 scale_fill_manual(values=c("#4BC5BA", "#091917"))
 ```
-### Hindi Valence
 
+### Hindi Valence
 ```{r}
 Hindi_part <- filter(DSEML_results, hindi != 4, hindi != 3, hindi !=2, hindi != 1) %>%
   select(c(valence_H_low_1, valence_H_mid_1, valence_H_high_1)) %>%
@@ -208,7 +209,6 @@ scale_fill_manual(values=c("#7D4BC5", "#100919"))
 ```
 
 ### Mandarin Valence
-
 ```{r}
 Mand_part <- filter(DSEML_results, mandarin != 4, mandarin != 3, mandarin !=2, mandarin != 1) %>%
   select(c(valence_M_low_1, valence_M_mid_1, valence_M_high_1)) %>%
@@ -241,9 +241,6 @@ ggplot(Mand_graph, aes(fill=Languages, y=Values, x=Valence_degree)) +
 geom_bar(position="dodge", stat="identity") + ggtitle("Mand Valence") +
 scale_fill_manual(values=c("#C54B56", "#19090B"))
 ```
-
-
-
 
 
 Participants {data-navmenu=Results}
