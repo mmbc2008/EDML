@@ -2,6 +2,7 @@
 title: "Languages and Music Perception"
 output: 
   flexdashboard::flex_dashboard:
+    runtime: shiny
     storyboard: true
     theme: sandstone
 ---
@@ -14,12 +15,13 @@ library(dplyr)
 library(lubridate)
 library(tidyverse)
 library(readxl)
-library(VennDiagram)
+library(shiny)
 DSEML_results <- read_excel("DSEML results.xlsx")
 ```
+
+
 Home {data-orientation=rows}
 =====================================================
-
 
 Row {Data-height = 350}
 ----------------------------------------------------
@@ -28,7 +30,7 @@ Row {Data-height = 350}
 
 ```{r}
 participants = length(DSEML_results$ResponseId)
-valueBox(participants, icon="fas fa-users", color = "#4BC5BA")
+valueBox(participants, caption = paste("Participants", actionButton("button1", " ", style = "background-color:rgba(39, 128, 227, 0.0); border-color:rgba(39, 128, 227, 0.0); position: absolute; overflow: hidden; left: 0px; top: 0px; right: 0px; bottom: 0px; width:100%")), icon = "fas fa-users", color = "#4BC5BA")
 ```
 
 ### Countries
@@ -49,6 +51,10 @@ valueBox(songs,
 
 Row {data-height=650}
 ----------------------------------------------------
+
+```{r}
+
+```
 
 Column {.sidebar data-width=350}
 --------------------------------------------------
@@ -221,10 +227,11 @@ scale_fill_manual(values=c("#C54B56", "#19090B"))
 
 
 Participants {data-navmenu=Results}
-======================================================
+=============================================================
 
-Column
--------------------------------------------------------
+Column 
+--------------------------------------------------------------
+
 
 ### Language distribution
 
@@ -241,6 +248,7 @@ ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
   coord_polar("y", start=0) + geom_text(aes(label = paste0(amount)), position = position_stack(vjust=0.5)) +
   labs(x = NULL, y = NULL, fill = NULL)
 ```
+
 Column
 -------------------------------------------------------
 
