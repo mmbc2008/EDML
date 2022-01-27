@@ -4,7 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: sandstone
-runtime: shiny
+    runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
