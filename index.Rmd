@@ -2,9 +2,9 @@
 title: "Languages and Music Perception"
 output: 
   flexdashboard::flex_dashboard:
-    runtime: shiny
     storyboard: true
     theme: sandstone
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -111,8 +111,8 @@ valence <-
                    values_to = "values_mean") %>%
         group_by(Languages) %>% 
           summarise(Values = mean(values_mean))
-valence['Valence_degree'] <- c("high", "low", "mid", "high", "low", "mid",
-                      "high", "low", "mid", "high", "low", "mid")
+valence['Valence_degree'] <- c("low", "mid", "high", "low", "mid",
+                      "high", "low", "mid", "high", "low", "mid", "high")
 valence[1, 1] = "Dutch"
 valence[2, 1] = "Dutch"
 valence[3, 1] = "Dutch"
@@ -125,6 +125,7 @@ valence[9, 1] = "Hindi"
 valence[10, 1] = "Mandarin"
 valence[11, 1] = "Mandarin"
 valence[12, 1] = "Mandarin"
+
 ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Valence") +
 scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56"))
@@ -132,6 +133,9 @@ scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56"))
 
 Column {.tabset}
 -----------------------------------------------------------------------
+
+### Explanation
+Comparing the Spotify valences (high, low, mid) to the perceived valence, etc.
 
 ### Dutch Valence
 ```{r}
@@ -253,7 +257,7 @@ scale_fill_manual(values=c("#C54B56", "#19090B"))
 Participants {data-navmenu=Results}
 =============================================================
 
-Column 
+Column {.tabset}
 ----------------------------------------------------
 
 ### Language distribution
