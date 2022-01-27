@@ -16,6 +16,7 @@ library(lubridate)
 library(tidyverse)
 library(readxl)
 library(shiny)
+library(shinyjs)
 DSEML_results <- read_excel("DSEML results.xlsx")
 ```
 
@@ -30,7 +31,7 @@ Row {Data-height = 350}
 
 ```{r}
 participants = length(DSEML_results$ResponseId)
-valueBox(participants, caption = paste("Participants", actionButton("button1", " ", style = "background-color:rgba(39, 128, 227, 0.0); border-color:rgba(39, 128, 227, 0.0); position: absolute; overflow: hidden; left: 0px; top: 0px; right: 0px; bottom: 0px; width:100%")), icon = "fas fa-users", color = "#4BC5BA")
+valueBox(participants, icon = "fas fa-users", color = "#4BC5BA")
 ```
 
 ### Countries
@@ -49,11 +50,46 @@ valueBox(songs,
          color =  "#7D4BC5")
 ```
 
-Row {data-height=650}
-----------------------------------------------------
-
+Column {.tabset}
+---------------------------------------------------------
+### Participants
 ```{r}
+```
 
+### Countries
+```{r}
+```
+
+
+### Songs
+Mandarin - High valence
+```{r}
+ui <- fluidPage(
+    useShinyjs(),
+    tags$audio(id = "myaudio", controls = NA, autoplay = NA, src = ""),
+    p(),
+)
+
+server <- function(input, output) {
+    runjs("document.getElementById('myaudio').volume = 0.2;") # initially reduce volume
+        runjs(sprintf("document.getElementById('myaudio').src = '%s';", "https://p.scdn.co/mp3-preview/9d68ec32f79cd83e01ef61e70b780989b577b7f4?cid=e1672700ae5648848338d2352cdc375e"))
+}
+
+server2 <- function(input, output) {
+    runjs("document.getElementById('myaudio').volume = 0.2;") # initially reduce volume
+        runjs(sprintf("document.getElementById('myaudio').src = '%s';", "https://p.scdn.co/mp3-preview/298e4ba91ea45111be4f84e8de2b70d07b7f1247?cid=e1672700ae5648848338d2352cdc375e"))
+}
+
+server3 <- function(input, output) {
+    runjs("document.getElementById('myaudio').volume = 0.2;") # initially reduce volume
+        runjs(sprintf("document.getElementById('myaudio').src = '%s';", "https://p.scdn.co/mp3-preview/b8c621280225ef15dc49e9056e5357bb84df3811?cid=e1672700ae5648848338d2352cdc375e"))        
+}
+
+```
+```{r}
+shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server2)
+shinyApp(ui = ui, server = server3)
 ```
 
 Column {.sidebar data-width=350}
