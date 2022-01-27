@@ -4,7 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: sandstone
-    runtime: shiny
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -15,8 +15,6 @@ library(dplyr)
 library(lubridate)
 library(tidyverse)
 library(readxl)
-library(shiny)
-library(shinyjs)
 DSEML_results <- read_excel("DSEML results.xlsx")
 ```
 
@@ -51,6 +49,41 @@ valueBox(songs,
 
 Column {.tabset}
 ---------------------------------------------------------
+### Main results
+```{r}
+valence <-
+  DSEML_results %>%
+    select(c(valence_E_low_1, valence_D_low_1, valence_M_low_1, valence_H_low_1, valence_E_mid_1, valence_D_mid_1, valence_M_mid_1, valence_H_mid_1, valence_E_high_1, valence_D_high_1, valence_M_high_1, valence_H_high_1)) %>%
+      pivot_longer(c("valence_E_low_1", "valence_D_low_1",
+                     "valence_M_low_1", "valence_H_low_1",
+                     "valence_E_mid_1", "valence_D_mid_1",
+                     "valence_M_mid_1", "valence_H_mid_1",
+                     "valence_E_high_1", "valence_D_high_1",
+                     "valence_M_high_1", "valence_H_high_1"),
+                   names_to = "Languages",
+                   values_to = "values_mean") %>%
+        group_by(Languages) %>% 
+          summarise(Values = mean(values_mean))
+valence['Valence_degree'] <- c("low", "mid", "high", "low", "mid",
+                      "high", "low", "mid", "high", "low", "mid", "high")
+valence[1, 1] = "Dutch"
+valence[2, 1] = "Dutch"
+valence[3, 1] = "Dutch"
+valence[4, 1] = "English"
+valence[5, 1] = "English"
+valence[6, 1] = "English"
+valence[7, 1] = "Hindi"
+valence[8, 1] = "Hindi"
+valence[9, 1] = "Hindi"
+valence[10, 1] = "Mandarin"
+valence[11, 1] = "Mandarin"
+valence[12, 1] = "Mandarin"
+
+ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree)) + 
+geom_bar(position="dodge", stat="identity") + ggtitle("Average Perceived Valence") +
+scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56"))
+```
+
 ### Participants
 Histogram with age and gender of participants
 ```{r}
@@ -64,21 +97,7 @@ Map with number of participants per country
 
 ### Songs
 Example of experiment with song snippet:
-```{r}
-ui <- fluidPage(
-    useShinyjs(),
-    tags$audio(id = "myaudio", controls = NA, autoplay = NA, src = ""),
-    p(),
-)
-
-server <- function(input, output) {
-    runjs("document.getElementById('myaudio').volume = 0.2;") # initially reduce volume
-        runjs(sprintf("document.getElementById('myaudio').src = '%s';", "https://p.scdn.co/mp3-preview/9d68ec32f79cd83e01ef61e70b780989b577b7f4?cid=e1672700ae5648848338d2352cdc375e"))
-}
-shinyApp(ui = ui, server = server)
-
-```
-
+<iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 Column {.sidebar data-width=350}
 --------------------------------------------------
@@ -306,3 +325,5 @@ Column
 --------------------------------------------------
 ### Song data
 Table with the songs, artists, languages and valences (according to Spotify)
+
+<iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
