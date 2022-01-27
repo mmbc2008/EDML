@@ -229,7 +229,7 @@ scale_fill_manual(values=c("#C54B56", "#19090B"))
 Participants {data-navmenu=Results}
 =============================================================
 
-Column 
+Column {.tabset}
 --------------------------------------------------------------
 
 
@@ -247,6 +247,14 @@ ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) + geom_text(aes(label = paste0(amount)), position = position_stack(vjust=0.5)) +
   labs(x = NULL, y = NULL, fill = NULL)
+```
+
+### chart
+```{r}
+
+ggplot(DSEML_results, aes(x=age)) +
+geom_histogram(aes(y=..density..), position="identity", alpha=0.5, fill = "red")
+
 ```
 
 Column
