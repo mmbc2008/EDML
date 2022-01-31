@@ -64,8 +64,8 @@ valence <-
                    values_to = "values_mean") %>%
         group_by(Languages) %>% 
           summarise(Values = mean(values_mean))
-valence['Valence_degree'] <- c("low", "mid", "high", "low", "mid",
-                      "high", "low", "mid", "high", "low", "mid", "high")
+valence['Valence_degree'] <- c("high", "low", "mid", "high", "low", "mid",
+                      "high", "low", "mid", "high", "low", "mid")
 valence[1, 1] = "Dutch"
 valence[2, 1] = "Dutch"
 valence[3, 1] = "Dutch"
@@ -315,6 +315,20 @@ Column
 The distribution of participants who have at least full professional proficiency in the languages tested in the experiment. 
 
 Note. Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
+
+Likeability
+====================================================
+```{r}
+lik_fam <- data.frame(
+  familiarity = c(DSEML_results[["familiar_E_low"]], DSEML_results[["familiar_D_mid"]], DSEML_results[["familiar_H_high"]], DSEML_results[["familiar_M_low"]]),
+  likeability = c(DSEML_results[["enjoy_E_low"]], DSEML_results[["enjoy_D_mid"]], DSEML_results[["enjoy_H_high"]], DSEML_results[["enjoy_M_low"]]),
+  language = c("English", "Dutch", "Hindi", "Mandarin"),
+  valence = c(0.206, 0.571, 0.802, 0.206)
+  )
+ggplot(lik_fam, aes(x=familiarity, y=likeability, size = valence, color = language)) +
+    geom_point(alpha=0.7) +
+    scale_size(range = c(0, 1), name="Population (M)")
+```
 
 Songs
 ===============================================
