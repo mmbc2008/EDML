@@ -318,16 +318,24 @@ Note. Bilingual participants were counted multiple times. Participants in “Oth
 
 Songs
 ===============================================
-Column
+Column {.sidebar data-width=300}
 ---------------------------------------------------
 ### Selection process
-Explanation of how songs were selected
 
-Column
+Column {data-width=450}
 --------------------------------------------------
 ### Song data
-Table with the songs, artists, languages and valences (according to Spotify)
-
+```{r}
+Used_songs <- data.frame (
+  Title = c("Mojito", "Leef nu het kan", "Walk of life", "Mummy Nu Pasand (From 'Jai Mummy Di')", "寬恕", "Respect", "Don't look back in anger", "Jagga Jiteya", "愛的就是你", "Treur niet (Ode aan het leven)", "Maybe tomorrow", "Shubhaarambh"),
+  Artist = c("Jay Chou", "Jan Smit", "Dire Straits", "Sunanda Sharma, Tanishjk Bagchi", "Y2j", "Tino Martin", "Oasis", "Daler Mehndi, Dee MC, Shashwat Sachdev", "Leehom Wang", "Diggy Dex, JW Roy", "Stereophonics", "Amit Trivedi, Shruti Pathak, Divya Kumar"),
+  Language = c("Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi"),
+  Valence = c(0.800, 0.802, 0.802, 0.802, 0.206, 0.206, 0.206, 0.206, 0.571, 0.571, 0.571, 0.571)
+)
+knitr::kable(Used_songs)
+```
+Column {data-width=250}
+--------------------------------------------------
 ```{r}
 # <iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 ```
