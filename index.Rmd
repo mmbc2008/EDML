@@ -130,7 +130,7 @@ Taking advantage of the research group’s diverse cultural backgrounds, an onli
 
 Theory
 ===============================================
-Column {.sidebar data-width=400}
+Column 
 --------------------------------------------------
 ##### Article Review: Cross-Cultural Mood Perception In Pop Songs And Its Alignment With Mood Detection Algorithms (Lee et al., 2021)
 
@@ -195,7 +195,7 @@ Valence {data-navmenu=Results}
 Column {.tabset}
 -----------------------------------------------------------------------
 
-#### An explanation of Valence
+#### Valence as a measure for happiness
 Valence is a rating that is given by sound engineers at Spotify which measures the positiveness of a song. High valence values indicate that a song is happier in nature, while now valence indicates sadder songs. To measure the “happiness” of a song, spotify data scientists have an agreed upon metric of what happy music sounds like. However according to Spotify a large amount of this measurement is also done by AI technology; therefore making it unclear exactly what the indicators of a happy song are. Spotify issues a measurement of valence in a decimal system, with values between 0 to 1 going up to three decimal points. 
 
 Psychologists on the other hand measure valence as the probability of a thing making people experience positive emotions.
@@ -204,20 +204,20 @@ Psychologists on the other hand measure valence as the probability of a thing ma
 ### General Observations
 On the right, the total perceived valence can be seen. It seems that in general:
 
-* Although most tracks are rated similar to their assigned valence values, no major differences between the levels of valence were observed
+* Participants mostly agreed on the perceived valence in songs regardless of language
 
-* Hindi music were consistently rated high in perceived valence regardless of its assigned numerical rating on Spotify
+* Hindi songs were consistently rated high in perceived valence regardless of its assigned numerical rating on Spotify
 
-* People cannot differentiate between sad and neutral songs, they seem to only be aware of above average levels of happiness in songs regardless of whether they were performed in their native languages or not
+* People find it difficult to differentiate between sad and neutral songs, they seem to only be aware of above average levels of happiness in songs regardless of language
 
 ### Native versus non-native
-The last four plots on the right show the perceived valences of native speakers compared to those of non-native speakers. It can be seen that:
+The last four plots on the right show the perceived valences of native speakers compared to those of non-native speakers. It seems that in general:
 
-* In general, there is no clear distinction in perceived emotion between natives and non-natives
+* With the exception of Hindi songs, native speakers and non-native speakers did not differ much in their perceptions of valence in songs
 
-* English and Mandarin songs were rated higher in valence by non-native speakers than native speakers
+* Native Hindi speakers were less accurate than non-native speakers in perceiving the valence in Hindi songs according to Spotify API
 
-* Mandarin songs were rated higher in valence by non-native speakers than native speakers
+* Participants were better able to perceive the valence in Dutch and Mandarin songs (according to SPotify API) than Hindi and English songs, regardless of whether the songs were performed in their native language or not
 
 
 Column {.tabset}
@@ -359,7 +359,7 @@ geom_bar(position="dodge", stat="identity") + ggtitle("Mand Valence") +
 scale_fill_manual(values=c("#C54B56", "#19090B")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
 ```
 
-Participants {data-navmenu=Results}
+Participants {data-navmenu=Methodology}
 =============================================================
 
 Column {.tabset}
@@ -402,17 +402,17 @@ The pie chart is a distribution of participants who have at least full professio
 ##### Age-gender distribution
 The histogram shows the distribution of the participants in terms of age and gender. Most participants were female followed by males then Non-binary and, lastly, there was one person categorised as 'other'. Since most participants are aged 18-25 the most seen highest education degree is highschool.
 
-Enjoyment {data-navmenu=Results}
+Enjoyment and Familiarity {data-navmenu=Results}
 ====================================================
 
 Column {data-width=350}
 ---------------------------------------------------
-### Comparing familiarity to enjoyment
+### Comparing enjoyment to familiarity
 The graph on the right shows that there is a slight correlation between the familiarity and the enjoyability of a song; the more familiar the more enjoyable. Furthermore, it appears that the Dutch songs were the least familiar among our participants. All Dutch and Hindi songs were found to be the least enjoyable, despite the differences in valence. It is remarkable that the Mandarin songs are almost as familiar and enjoyable as the English songs. This might be due to the fact that Mandarin is often perceived as a softer and therefore more pleasant language. Less surprising is the fact that the English songs were the most familiar and the most enjoyed, since all participants could speak English to at least some degree considering that the survey was written in English. However, it is interesting to see that the English song with the lowest valence was the most enjoyed, which could be explained by its high familiarity, since the perceived valence was low (see valence results). 
 
 Column {data-width=650}
 ----------------------------------------------------
-### Familiarity and Enjoyability
+### Familiarity and Enjoyment
 ```{r}
 lik_fam <- data.frame(
   familiar = c(mean(DSEML_results$familiar_E_low),               mean(DSEML_results$familiar_E_mid), 
@@ -445,10 +445,10 @@ mean(DSEML_results$familiar_M_high)),
 ggplot(lik_fam, aes(x=familiar, y=enjoyable, size = valence, color = language)) +
     geom_point(alpha=0.5) +
     scale_size(range = c(3, 12), name="Valence") +
-  scale_fill_manual(values=c("#4BC5BA", "#7D4BC5", "#C54B56", "#93C54B")) + labs(title = "Enjoyability compared to Familiarity with language and valence",x="Average Familiarity of the Song", y="Average Enjoyability of the Song")
+  scale_fill_manual(values=c("#4BC5BA", "#7D4BC5", "#C54B56", "#93C54B")) + labs(title = "Enjoyment compared to Familiarity with language and valence",x="Average Familiarity of the Song", y="Average Enjoyment of the Song")
 ```
 
-Songs
+Songs {data-navmenu=Methodology}
 ===============================================
 Column {.sidebar data-width=300}
 ---------------------------------------------------
