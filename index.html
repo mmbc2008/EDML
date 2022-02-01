@@ -2686,16 +2686,17 @@ Map with number of participants per country
 <h1>Valence</h1>
 <div id="column-2" class="section level2">
 <h2>Column</h2>
-<div id="average-perceived-valences" class="section level3">
-<h3>Average perceived valences</h3>
+<div id="an-explanation-of-valence" class="section level3">
+<h3>An explanation of Valence</h3>
+<p>Valence is a rating that is given by sound engineers at Spotify which measures the positiveness of a song. High valence values indicate that a song is happier in nature, while now valence indicates sadder songs. To measure the “happiness” of a song, spotify data scientists have an agreed upon metric of what happy music sounds like. However according to Spotify a large amount of this measurement is also done by AI technology; therefore making it unclear exactly what the indicators of a happy song are. Spotify issues a measurement of valence in a decimal system, with values between 0 to 1 going up to three decimal points.</p>
+<p>Psychologists on the other hand measure valence as the probability of a thing making people experience positive emotions.</p>
+</div>
+<div id="findings" class="section level3">
+<h3>Findings</h3>
 </div>
 </div>
 <div id="column-3" class="section level2 tabset">
 <h2 class="tabset">Column</h2>
-<div id="explanation" class="section level3">
-<h3>Explanation</h3>
-<p>Comparing the Spotify valences (high, low, mid) to the perceived valence, etc.</p>
-</div>
 <div id="dutch-valence" class="section level3">
 <h3>Dutch Valence</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
@@ -2724,6 +2725,13 @@ Map with number of participants per country
 </div>
 <p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="576" data-figure-id=fig6 /></p>
 </div>
+<div id="averaged-perceived-valence" class="section level3">
+<h3>Averaged Perceived Valence</h3>
+<div class="knitr-options" data-fig-width="576" data-fig-height="460">
+
+</div>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="576" data-figure-id=fig7 /></p>
+</div>
 </div>
 </div>
 <div id="participants-2" class="section level1" data-navmenu="Results">
@@ -2732,13 +2740,6 @@ Map with number of participants per country
 <h2 class="tabset">Column</h2>
 <div id="language-distribution" class="section level3">
 <h3>Language distribution</h3>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="576" data-figure-id=fig7 /></p>
-</div>
-<div id="chart" class="section level3">
-<h3>chart</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
@@ -2757,7 +2758,7 @@ Map with number of participants per country
 </div>
 </div>
 </div>
-<div id="enjoy" class="section level1">
+<div id="enjoy" class="section level1" data-navmenu="Results">
 <h1>Enjoy</h1>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
@@ -2770,6 +2771,7 @@ Map with number of participants per country
 <h2 class="sidebar">Column</h2>
 <div id="selection-process" class="section level3">
 <h3>Selection process</h3>
+<p>Due to the difficulty in directly comparing valence with the happiness, we resorted to selecting 3 levels of valence values (low, mid and high). The songs were chosen from four playlists, one per language, of over 120 songs, to find 4 with the same valence. Then we put these 4 songs, and their different levels in a randomized order where participants were asked to rate them in a random order. To minimize sound fatigue and keep respondents alert, we chose to sample 30 seconds of music from each song from its 2nd chorus verse, in order to encapsulate the essence of the various songs.</p>
 </div>
 </div>
 <div id="column-7" class="section level2" data-width="450">
@@ -2781,8 +2783,8 @@ Map with number of participants per country
 </div>
 <table>
 <colgroup>
-<col width="41%" />
-<col width="41%" />
+<col width="39%" />
+<col width="42%" />
 <col width="9%" />
 <col width="8%" />
 </colgroup>
@@ -2820,7 +2822,7 @@ Map with number of participants per country
 <td align="right">0.802</td>
 </tr>
 <tr class="odd">
-<td align="left">&lt;U+5BEC&gt;&lt;U+6055&gt;</td>
+<td align="left">Kuan Shu</td>
 <td align="left">Y2j</td>
 <td align="left">Mandarin</td>
 <td align="right">0.206</td>
@@ -2844,7 +2846,7 @@ Map with number of participants per country
 <td align="right">0.206</td>
 </tr>
 <tr class="odd">
-<td align="left">&lt;U+611B&gt;&lt;U+7684&gt;&lt;U+5C31&gt;&lt;U+662F&gt;&lt;U+4F60&gt;</td>
+<td align="left">Ai De Jiu Shi Ni</td>
 <td align="left">Leehom Wang</td>
 <td align="left">Mandarin</td>
 <td align="right">0.571</td>
@@ -2873,9 +2875,8 @@ Map with number of participants per country
 </div>
 <div id="column-8" class="section level2" data-width="250">
 <h2>Column</h2>
-<div class="knitr-options" data-fig-width="576" data-fig-height="460">
-
-</div>
+<iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
 </div>
 </div>
 
