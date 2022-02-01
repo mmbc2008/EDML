@@ -47,6 +47,11 @@ valueBox(songs,
          color =  "#7D4BC5")
 ```
 
+Row {Data-height=50}
+----------------------------------------------------
+
+#### **How does the language of the lyrics in music influence people’s perception of valence?**
+
 Column {.tabset}
 ---------------------------------------------------------
 ### Main results
@@ -100,9 +105,19 @@ Map with number of participants per country
 
 
 ### Songs
-Example of experiment with song snippet:
+**Listen to the following song:**
 
 <iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+
+*Did you enjoy listening to this song? *
+
+*How happy or sad did this song make you feel?*
+
+*Did you already know this song before listening?*
+
+
+These are some questions of our survey, which we asked participants in order to get a better insight into the perceived happiness level of foreign music compared to familiar music.
 
 
 Column {.sidebar data-width=350}
@@ -113,31 +128,87 @@ Last year’s Spotify Wrapped revealed that the top three globally most streamed
 
 Taking advantage of the research group’s diverse cultural backgrounds, an online experiment was designed to investigate the effect of one’s native language on the perception of mood in songs. Native Dutch, Mandarin, Hindi and English speakers were the target populations of this study. For each language, 3 songs were selected according to the valence endpoint values of Spotify API - one with low valence (0.2), one with middle valence (0.5) and one with high valence (0.8). Songs with low valence values represented songs with a sad mood, whereas songs with high valence values represented songs with a happy mood. Songs with middle valence values represented neutral songs that are neither sad nor happy. In total, 12 songs were selected for the experiment. Participants were exposed to 15-second snippets of all 12 songs and rated their perception of the mood (positive vs negative) in the songs.
 
+Methodology
+===============================================
+Column {.sidebar data-width=400}
+--------------------------------------------------
+
+##### Methodology
+To conduct this experiment, a set of target audience parameters were decided upon. These included personal factors such as age, gender, level of education and nationality. Furthermore, there was asked about their native language and if participants had knowledge of other languages, as well as familiarity, or listening habits in regard to music that falls outside the reach of their native languages. Once these criteria were decided upon, each of the four team members reached out to correspondents withing their network to gather feedback. Although we were not sure how this would impact the final result at the start of the experiment, some interesting results have come out of it, which will be elaborated upon further, in other sections.
+
+*A majority of participants responded to the form positively, some even appreciating the diversity of the music and going the extra step of adding a few of the selections into their personal playlists*
+
+Once the participants were sent the form, they were given a snippet of one of the 12 selected tracks, after which they were asked to rate the “happiness” of the song on a scale of 0-6, along with answering questions in regards to their familiarity with the foreign languages (English, Mandarin, Hindi and Dutch). 
+
+Column (data-width=300)
+--------------------------------------------------
+##### General questions of the Survey:
+```{r}
+Questions <- data.frame (
+  Question = c("What is your age in years? e.g. 22", "What gender do you identify the most with?", "What country are you from?", "What is the highest level of education that you have completed?", "How fluent are you in Dutch/English/Hindi/Mandarin", "How often do you listen to music in a non-native language?"),
+  Scale = c("Years", "M/F/N-B/Other", "List of Countries", "Selected Choice", "No proficiency- Native proficiency", "Never - Always")
+)
+knitr::kable(Questions)
+```
+##### Questions after listening to each song:
+```{r}
+SQuestions <- data.frame (
+  Question = c("How much did you enjoy listening to the song?", "How would you describe the song that you have just heard?", "How familiar are you with this song?"),
+  Scale = c("Not at all - A great deal", "Sad - Happy", "Not familiar at all - Extremely familiar")
+)
+knitr::kable(SQuestions)
+```
+
+Column (data-width=300)
+--------------------------------------------------
+#### Problems Encountered
+
+* While the spotify API provides its information in decimal points, due to a difficulty in direct comparison between Valence points by spotify and a scale rating by users, we decided to select tracks with the same valence points, and compare them to each other.
+
+* Moreover, due to happiness being subjective, based on past personal experiences, we needed to account for a lack of objectivity within our results.
+
+* Furthermore, we did not take into account the fact that a lot of Indian audiences consider their native language to be English instead of Hindi. This also resulted in a lower amount of participants with Hindi as a native language as compared to the English native speakers specifically. 
+
 
 Valence {data-navmenu=Results}
 ===============================================
 
-Column
+Column {.tabset}
 -----------------------------------------------------------------------
 
-### An explanation of Valence
+#### An explanation of Valence
 Valence is a rating that is given by sound engineers at Spotify which measures the positiveness of a song. High valence values indicate that a song is happier in nature, while now valence indicates sadder songs. To measure the “happiness” of a song, spotify data scientists have an agreed upon metric of what happy music sounds like. However according to Spotify a large amount of this measurement is also done by AI technology; therefore making it unclear exactly what the indicators of a happy song are. Spotify issues a measurement of valence in a decimal system, with values between 0 to 1 going up to three decimal points. 
 
 Psychologists on the other hand measure valence as the probability of a thing making people experience positive emotions.
 
 
-### Findings
-On the right, the perceived valences of native speakers are compared to those of non-native speakers as well as the total perceived valence. It can be seen that in general:
-* Although, most tracks are rated similar to their assigned valence values, there is not a major jump seen between valence
-* Hindi music is consistently rated high in perceived valence regardless of its assigned numerical rating on Spotify
+### General Observations
+On the right, the total perceived valence can be seen. It seems that in general:
 
-In term of non-native compared to native speakers, it can be seen that:
+* Although most tracks are rated similar to their assigned valence values, there is not a major jump seen between valence
+
+* Hindi music consistently rated high in perceived valence regardless of its assigned numerical rating on Spotify
+
+* People cannot differentiate between sad and normal songs, they only gain awareness of above average levels of happiness
+
+### Native versus non-native
+The last four plots on the right show the perceived valences of native speakers compared to those of non-native speakers. It can be seen that:
+
 * In general, there is not a clear distinction between natives and non-natives
-* 
+
+* English songs rated higher by non-natives than natives
+
+* Mandarin rated higher within non native speakers compared to english tracks
 
 
 Column {.tabset}
 -----------------------------------------------------------------------
+### Averaged Perceived Valence
+```{r}
+ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
+geom_bar(position="dodge", stat="identity") + ggtitle("Average Perceived Valence") +
+scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
+```
 
 ### Dutch Valence
 ```{r}
@@ -269,14 +340,6 @@ geom_bar(position="dodge", stat="identity") + ggtitle("Mand Valence") +
 scale_fill_manual(values=c("#C54B56", "#19090B")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
 ```
 
-### Averaged Perceived Valence
-```{r}
-ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
-geom_bar(position="dodge", stat="identity") + ggtitle("Average Perceived Valence") +
-scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
-```
-
-
 Participants {data-navmenu=Results}
 =============================================================
 
@@ -368,4 +431,4 @@ knitr::kable(Used_songs)
 ```
 Column {data-width=250}
 --------------------------------------------------
-<iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="530" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
