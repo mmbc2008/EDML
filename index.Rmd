@@ -1,5 +1,5 @@
 ---
-title: "Languages and Music Perception"
+title: "Native Language and Perceived Emotion in Music"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
@@ -130,9 +130,14 @@ Taking advantage of the research group’s diverse cultural backgrounds, an onli
 
 Theory
 ===============================================
+
 Column 
 --------------------------------------------------
-##### Article Review: Cross-Cultural Mood Perception In Pop Songs And Its Alignment With Mood Detection Algorithms (Lee et al., 2021)
+### Background
+
+Column 
+--------------------------------------------------
+### Article Review: Cross-Cultural Mood Perception In Pop Songs And Its Alignment With Mood Detection Algorithms (Lee et al., 2021)
 
 How differently do people perceive songs in a non-native language compared to songs in their native language? A recent study led by Lee et al. (2021) provides some insights into this question. 
 
@@ -476,7 +481,8 @@ Conclusion
 ===============================================
 Column 
 ---------------------------------------------------
-### Conclusion
+### Discussion and Conclusion
+
 
 Column
 ----------------------------------------------------
