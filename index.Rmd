@@ -50,7 +50,7 @@ valueBox(songs,
 Row {Data-height=50}
 ----------------------------------------------------
 
-#### **How does the language of the lyrics in music influence people’s perception of valence?**
+#### **How does the language of lyrics in music influence people’s perception of valence?**
 
 Column {.tabset}
 ---------------------------------------------------------
@@ -363,18 +363,37 @@ ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
 scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56", "#656766"))
 ```
 
+### Age-gender distribution
+```{r}
+ggplot(DSEML_results, aes(x=age, fill=factor(gender))) +
+  geom_histogram(color='black', alpha=1) + labs(fill='Gender', title = "Distribution of age and gender of participants") +  scale_fill_manual(name="Gender",labels=c("Male", "Female", "Non-binary", "Other"), values = c("red", "blue", "green", "purple")) + labs(x="Age", y="Number of Participants")
+```
+
 Column
 -------------------------------------------------------
+### Participant statistics
 
-### Explanation of pie chart
+In order to give some insight about the experiment, both graphs on the left provide some basic information about the **103** participants.
 
-#### Figure Language Distribution
-The distribution of participants who have at least full professional proficiency in the languages tested in the experiment. 
+##### Language Distribution
+The pie chart is a distribution of participants who have at least full professional proficiency in the languages tested in the experiment. 
 
-Note. Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
+**Note.** Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
+
+##### Age-gender distribution
+The histogram shows the distribution of the participants in terms of age and gender. Most participants were female followed by males then Non-binary and, lastly, there was one person categorised as 'other'. Since most participants are aged 18-25 the most seen highest education degree is highschool.
 
 Enjoy {data-navmenu=Results}
 ====================================================
+
+Column {data-width=350}
+---------------------------------------------------
+### Comparing familiarity to enjoyment
+The graph on the right shows that there is a slight correlation between the familiarity and the enjoyability of a song; the more familiar the more enjoyable. Furthermore, it appears that the Dutch songs were the least familiar among our participants. All Dutch and Hindi songs were found to be the least enjoyable, despite the differences in valence. It is remarkable that the Mandarin songs are almost as familiar and enjoyable as the English songs. This might be due to the fact that Mandarin is often perceived as a softer and therefore more pleasant language. Less surprising is the fact that the English songs were the most familiar and the most enjoyed, since all participants could speak English to at least some degree considering that the survey was written in English. However, it is interesting to see that the English song with the lowest valence was the most enjoyed, which could be explained by its high familiarity, since the perceived valence was low (see valence results). 
+
+Column {data-width=650}
+----------------------------------------------------
+### Familiarity and Enjoyability
 ```{r}
 lik_fam <- data.frame(
   familiar = c(mean(DSEML_results$familiar_E_low),               mean(DSEML_results$familiar_E_mid), 
@@ -407,7 +426,7 @@ mean(DSEML_results$familiar_M_high)),
 ggplot(lik_fam, aes(x=familiar, y=enjoyable, size = valence, color = language)) +
     geom_point(alpha=0.5) +
     scale_size(range = c(3, 12), name="Valence") +
-  scale_fill_manual(values=c("#4BC5BA", "#7D4BC5", "#C54B56", "#93C54B")) + labs(x="Average Familiarity of the Song", y="Average Enjoyability of the Song")
+  scale_fill_manual(values=c("#4BC5BA", "#7D4BC5", "#C54B56", "#93C54B")) + labs(title = "Enjoyability compared to Familiarity with language and valence",x="Average Familiarity of the Song", y="Average Enjoyability of the Song")
 ```
 
 Songs
@@ -432,3 +451,19 @@ knitr::kable(Used_songs)
 Column {data-width=250}
 --------------------------------------------------
 <iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="530" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+Conclusion
+===============================================
+Column 
+---------------------------------------------------
+### Conclusion
+
+Column
+----------------------------------------------------
+### Future work
+There is still room for improvement and therefore we will discuss some directions for future research based on the findings in this report.
+Firstly, the participants were asked to rate the songs on a happiness scale instead of valence, which means that the results might be biased (low valence songs were sometimes rated the same as mid valence). Moreover, there might have been other kinds of biases which could be avoided in future research. 
+
+Something that was beyond the scope of our project is the comparison of western and non-western songs directly (Dutch/English - Hindi/Mandarin). Does one generally sound more happy? Furthermore, this could be extended on by looking at the Korean Pop songs, which are popular nowadays all over the world. What makes these songs so enticing?
+
+Lastly, a similar experiment could be conducted based on a different cultural element than songs, such as paintings or dance styles. Would similar results be found when its not about songs but other art forms?
