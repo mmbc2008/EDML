@@ -95,7 +95,7 @@ scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56")) + labs(x
 ### Participants
 ```{r}
 ggplot(DSEML_results, aes(x=age, fill=factor(gender))) +
-  geom_histogram(color='black', alpha=1) + labs(fill='Gender', title = "Distribution of age and gender of participants") +  scale_fill_manual(name="Gender",labels=c("Male", "Female", "Non-binary", "Other"), values = c("red", "blue", "green", "purple")) + labs(x="Age", y="Number of Participants")
+  geom_histogram(color='black', alpha=1) + labs(fill='Gender', title = "Distribution of age and gender of participants") +  scale_fill_manual(name="Gender",labels=c("Male", "Female", "Non-binary", "Other"), values = c("#C54B56", "#4BC5BA", "#93C54B", "#7D4BC5")) + labs(x="Age", y="Number of Participants")
 ```
 
 ### Countries
@@ -117,7 +117,7 @@ Map with number of participants per country
 *Did you already know this song before listening?*
 
 
-These are some questions of our survey, which we asked participants in order to get a better insight into the perceived happiness level of foreign music compared to familiar music.
+These are some questions that were included in our survey, which we asked participants in order to get a better insight into the perceived emotion in music performed in a foreign language compared to those in a native language.
 
 
 Column {.sidebar data-width=350}
@@ -127,6 +127,25 @@ Column {.sidebar data-width=350}
 Last year’s Spotify Wrapped revealed that the top three globally most streamed artists are, in correct order: Bad Bunny, Taylor Swift and BTS (Spotify, 2021). Interestingly, not only are all three artists based in different continents, two of these artists also do not predominantly perform in the English language. Given that more than half of Spotify’s monthly active users come from Western English-speaking countries (Dean, 2021), this goes to show that music indeed transcends language, such that people all around the world can enjoy songs in foreign languages. The question remains, however, how differently do people perceive songs in a non-native language compared to songs in their native language?
 
 Taking advantage of the research group’s diverse cultural backgrounds, an online experiment was designed to investigate the effect of one’s native language on the perception of mood in songs. Native Dutch, Mandarin, Hindi and English speakers were the target populations of this study. For each language, 3 songs were selected according to the valence endpoint values of Spotify API - one with low valence (0.2), one with middle valence (0.5) and one with high valence (0.8). Songs with low valence values represented songs with a sad mood, whereas songs with high valence values represented songs with a happy mood. Songs with middle valence values represented neutral songs that are neither sad nor happy. In total, 12 songs were selected for the experiment. Participants were exposed to 15-second snippets of all 12 songs and rated their perception of the mood (positive vs negative) in the songs.
+
+Theory
+===============================================
+Column {.sidebar data-width=400}
+--------------------------------------------------
+##### Article Review: Cross-Cultural Mood Perception In Pop Songs And Its Alignment With Mood Detection Algorithms (Lee et al., 2021)
+
+How differently do people perceive songs in a non-native language compared to songs in their native language? A recent study led by Lee et al. (2021) provides some insights into this question. 
+
+Putting their focus on mood perception in music specifically, Lee et al. (2021) examined three research questions in their study: first, to what extent people with different cultural backgrounds perceive mood in music differently; second, to what extent people within and between cultures agree on their perception of mood in music; and third, to what extent mood detection algorithms in Music Information Retrieval (MIR) accurately reflect human judgement, and whether a cultural bias can be found in the algorithm.
+
+As an attempt to answer the research questions, the researchers analyzed three independent pools of participants from three countries (namely Brazil, South Korea and the US) that speak three different languages (namely Portuguese, Korean and English). The researchers’ explanation for selecting these populations is simple but rather convincing - there is evidence indicating that unique clusters in the West, Asia, and Latin America are formed due to shared music interests (notice how this is consistent with the top three globally most streamed artists on Spotify as well!). 
+
+The researchers’ choice of manually compiling a novel dataset of pop songs as experiment stimuli is refreshing, as most previous research (e.g. Eerola & Vuoskoski, 2011) utilized musical pieces that are known to evoke specific emotions. This makes the experiment setting feel more similar to real-world experiences, improving the external validity of the research findings. 
+
+A key finding suggests that emotions in pop songs may be universally recognizable to audiences regardless of cultural background, even when the song is unfamiliar. This statement was inferred based on the finding that listeners within and across cultures highly agreed on the presence of mood attributes such as danceable, energy, sad, cheerful and electronic in songs.
+
+Another interesting result is the researcher’s conclusion that there is no cultural bias in the algorithms of Spotify API. Initially, the researchers hypothesized that the algorithm that was developed in the West would align better with participants in the US; however, statistical analyses revealed that there were no significant differences between the algorithm’s judgement and those of participants across cultures. Although this finding seems promising at first glance, the researchers’ arguments may not be robust enough to make such a conclusion, especially since the study did not include other cultures such as the African cultures and other Asian cultures. 
+
 
 Methodology
 ===============================================
@@ -185,25 +204,25 @@ Psychologists on the other hand measure valence as the probability of a thing ma
 ### General Observations
 On the right, the total perceived valence can be seen. It seems that in general:
 
-* Although most tracks are rated similar to their assigned valence values, there is not a major jump seen between valence
+* Although most tracks are rated similar to their assigned valence values, no major differences between the levels of valence were observed
 
-* Hindi music consistently rated high in perceived valence regardless of its assigned numerical rating on Spotify
+* Hindi music were consistently rated high in perceived valence regardless of its assigned numerical rating on Spotify
 
-* People cannot differentiate between sad and normal songs, they only gain awareness of above average levels of happiness
+* People cannot differentiate between sad and neutral songs, they seem to only be aware of above average levels of happiness in songs regardless of whether they were performed in their native languages or not
 
 ### Native versus non-native
 The last four plots on the right show the perceived valences of native speakers compared to those of non-native speakers. It can be seen that:
 
-* In general, there is not a clear distinction between natives and non-natives
+* In general, there is no clear distinction in perceived emotion between natives and non-natives
 
-* English songs rated higher by non-natives than natives
+* English and Mandarin songs were rated higher in valence by non-native speakers than native speakers
 
-* Mandarin rated higher within non native speakers compared to english tracks
+* Mandarin songs were rated higher in valence by non-native speakers than native speakers
 
 
 Column {.tabset}
 -----------------------------------------------------------------------
-### Averaged Perceived Valence
+### Average Perceived Valence
 ```{r}
 ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Average Perceived Valence") +
@@ -383,7 +402,7 @@ The pie chart is a distribution of participants who have at least full professio
 ##### Age-gender distribution
 The histogram shows the distribution of the participants in terms of age and gender. Most participants were female followed by males then Non-binary and, lastly, there was one person categorised as 'other'. Since most participants are aged 18-25 the most seen highest education degree is highschool.
 
-Enjoy {data-navmenu=Results}
+Enjoyment {data-navmenu=Results}
 ====================================================
 
 Column {data-width=350}
