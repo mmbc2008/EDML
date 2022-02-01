@@ -88,8 +88,9 @@ scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56"))
 ```
 
 ### Participants
-Histogram with age and gender of participants
 ```{r}
+ggplot(DSEML_results, aes(x=age, fill=factor(gender))) +
+  geom_histogram(color='black', alpha=1) + labs(fill='Gender', title = "Distribution of age and gender of participants")
 ```
 
 ### Countries
@@ -347,7 +348,7 @@ Column {data-width=450}
 ### Song data
 ```{r}
 Used_songs <- data.frame (
-  Title = c("Mojito", "Leef nu het kan", "Walk of life", "Mummy Nu Pasand (From 'Jai Mummy Di')", "寬恕", "Respect", "Don't look back in anger", "Jagga Jiteya", "愛的就是你", "Treur niet (Ode aan het leven)", "Maybe tomorrow", "Shubhaarambh"),
+  Title = c("Mojito", "Leef nu het kan", "Walk of life", "Mummy Nu Pasand (From 'Jai Mummy Di')", "Kuan Shu", "Respect", "Don't look back in anger", "Jagga Jiteya", "Ai De Jiu Shi Ni", "Treur niet (Ode aan het leven)", "Maybe tomorrow", "Shubhaarambh"),
   Artist = c("Jay Chou", "Jan Smit", "Dire Straits", "Sunanda Sharma, Tanishjk Bagchi", "Y2j", "Tino Martin", "Oasis", "Daler Mehndi, Dee MC, Shashwat Sachdev", "Leehom Wang", "Diggy Dex, JW Roy", "Stereophonics", "Amit Trivedi, Shruti Pathak, Divya Kumar"),
   Language = c("Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi"),
   Valence = c(0.800, 0.802, 0.802, 0.802, 0.206, 0.206, 0.206, 0.206, 0.571, 0.571, 0.571, 0.571)
