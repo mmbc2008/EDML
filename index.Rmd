@@ -63,9 +63,12 @@ valence <-
                    names_to = "Languages",
                    values_to = "values_mean") %>%
         group_by(Languages) %>% 
-          summarise(Values = mean(values_mean))
-valence['Valence_degree'] <- c("high", "low", "mid", "high", "low", "mid",
-                      "high", "low", "mid", "high", "low", "mid")
+          summarise(Values = mean(values_mean)) 
+
+valence['Valence_degree'] <- c("high", "low", "mid", "high", "low", "mid", "high", "low", "mid", "high", "low", "mid")
+
+valence$Valence_degree2 <- factor(valence$Valence_degree, levels=c("low", "mid", "high"))
+
 valence[1, 1] = "Dutch"
 valence[2, 1] = "Dutch"
 valence[3, 1] = "Dutch"
@@ -79,7 +82,7 @@ valence[10, 1] = "Mandarin"
 valence[11, 1] = "Mandarin"
 valence[12, 1] = "Mandarin"
 
-ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree)) + 
+ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Average Perceived Valence") +
 scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56"))
 ```
@@ -118,40 +121,6 @@ Column
 
 ### Average perceived valences
 
-```{r}
-valence <-
-  DSEML_results %>%
-    select(c(valence_E_low_1, valence_D_low_1, valence_M_low_1, valence_H_low_1, valence_E_mid_1, valence_D_mid_1, valence_M_mid_1, valence_H_mid_1, valence_E_high_1, valence_D_high_1, valence_M_high_1, valence_H_high_1)) %>%
-      pivot_longer(c("valence_E_low_1", "valence_D_low_1",
-                     "valence_M_low_1", "valence_H_low_1",
-                     "valence_E_mid_1", "valence_D_mid_1",
-                     "valence_M_mid_1", "valence_H_mid_1",
-                     "valence_E_high_1", "valence_D_high_1",
-                     "valence_M_high_1", "valence_H_high_1"),
-                   names_to = "Languages",
-                   values_to = "values_mean") %>%
-        group_by(Languages) %>% 
-          summarise(Values = mean(values_mean))
-valence['Valence_degree'] <- c("low", "mid", "high", "low", "mid",
-                      "high", "low", "mid", "high", "low", "mid", "high")
-valence[1, 1] = "Dutch"
-valence[2, 1] = "Dutch"
-valence[3, 1] = "Dutch"
-valence[4, 1] = "English"
-valence[5, 1] = "English"
-valence[6, 1] = "English"
-valence[7, 1] = "Hindi"
-valence[8, 1] = "Hindi"
-valence[9, 1] = "Hindi"
-valence[10, 1] = "Mandarin"
-valence[11, 1] = "Mandarin"
-valence[12, 1] = "Mandarin"
-
-ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree)) + 
-geom_bar(position="dodge", stat="identity") + ggtitle("Valence") +
-scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56"))
-```
-
 Column {.tabset}
 -----------------------------------------------------------------------
 
@@ -176,13 +145,17 @@ Non_Dutch_part <- filter(DSEML_results, dutch !=5, dutch!=6) %>%
   summarise(Values = mean(values_mean))
 Dutch_graph = rbind(Dutch_part, Non_Dutch_part)
 Dutch_graph['Valence_degree'] <- c("high", "low", "mid", "high", "low", "mid")
+
+Dutch_graph$Valence_degree2 <- factor(Dutch_graph$Valence_degree, levels=c("low", "mid", "high"))
+
 Dutch_graph[1, 1] = "Native"
 Dutch_graph[2, 1] = "Native"
 Dutch_graph[3, 1] = "Native"
 Dutch_graph[4, 1] = "Non-native"
 Dutch_graph[5, 1] = "Non-native"
 Dutch_graph[6, 1] = "Non-native"
-ggplot(Dutch_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
+
+ggplot(Dutch_graph, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Dutch Valence") +
 scale_fill_manual(values=c("#93C54B", "#121909"))
 ```
@@ -203,15 +176,19 @@ Non_English_part <- filter(DSEML_results, english !=5, english !=6) %>%
                values_to = "values_mean") %>%
   group_by(Languages) %>% 
   summarise(Values = mean(values_mean))
+
 English_graph = rbind(English_part, Non_English_part)
 English_graph['Valence_degree'] <- c("high", "low", "mid", "high", "low", "mid")
+
+English_graph$Valence_degree2 <- factor(English_graph$Valence_degree, levels=c("low", "mid", "high"))
+
 English_graph[1, 1] = "Native"
 English_graph[2, 1] = "Native"
 English_graph[3, 1] = "Native"
 English_graph[4, 1] = "Non-native"
 English_graph[5, 1] = "Non-native"
 English_graph[6, 1] = "Non-native"
-ggplot(English_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
+ggplot(English_graph, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("English Valence") +
 scale_fill_manual(values=c("#4BC5BA", "#091917"))
 ```
@@ -234,13 +211,16 @@ Non_Hindi_part <- filter(DSEML_results, hindi !=5, hindi !=6) %>%
   summarise(Values = mean(values_mean))
 Hindi_graph = rbind(Hindi_part, Non_Hindi_part)
 Hindi_graph['Valence_degree'] <- c("high", "low", "mid", "high", "low", "mid")
+
+Hindi_graph$Valence_degree2 <- factor(Hindi_graph$Valence_degree, levels=c("low", "mid", "high"))
+
 Hindi_graph[1, 1] = "Native"
 Hindi_graph[2, 1] = "Native"
 Hindi_graph[3, 1] = "Native"
 Hindi_graph[4, 1] = "Non-native"
 Hindi_graph[5, 1] = "Non-native"
 Hindi_graph[6, 1] = "Non-native"
-ggplot(Hindi_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
+ggplot(Hindi_graph, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Hindi Valence") +
 scale_fill_manual(values=c("#7D4BC5", "#100919"))
 ```
@@ -263,13 +243,16 @@ Non_Mand_part <- filter(DSEML_results, mandarin !=5, mandarin!=6) %>%
   summarise(Values = mean(values_mean))
 Mand_graph = rbind(Mand_part, Non_Mand_part)
 Mand_graph['Valence_degree'] <- c("high", "low", "mid", "high", "low", "mid")
+
+Mand_graph$Valence_degree2 <- factor(Mand_graph$Valence_degree, levels=c("low", "mid", "high"))
+
 Mand_graph[1, 1] = "Native"
 Mand_graph[2, 1] = "Native"
 Mand_graph[3, 1] = "Native"
 Mand_graph[4, 1] = "Non-native"
 Mand_graph[5, 1] = "Non-native"
 Mand_graph[6, 1] = "Non-native"
-ggplot(Mand_graph, aes(fill=Languages, y=Values, x=Valence_degree)) + 
+ggplot(Mand_graph, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Mand Valence") +
 scale_fill_manual(values=c("#C54B56", "#19090B"))
 ```
