@@ -147,12 +147,12 @@ A key finding suggests that emotions in pop songs may be universally recognizabl
 Another interesting result is the researcher’s conclusion that there is no cultural bias in the algorithms of Spotify API. Initially, the researchers hypothesized that the algorithm that was developed in the West would align better with participants in the US; however, statistical analyses revealed that there were no significant differences between the algorithm’s judgement and those of participants across cultures. Although this finding seems promising at first glance, the researchers’ arguments may not be robust enough to make such a conclusion, especially since the study did not include other cultures such as the African cultures and other Asian cultures. 
 
 
-Methodology
+Survey {data-navmenu=Methodology}
 ===============================================
 Column {.sidebar data-width=400}
 --------------------------------------------------
 
-##### Survey {data-navmenu=Methodology}
+##### Survey 
 To conduct this experiment, a set of target audience parameters were decided upon. These included personal factors such as age, gender, level of education and nationality. Furthermore, there was asked about their native language and if participants had knowledge of other languages, as well as familiarity, or listening habits in regard to music that falls outside the reach of their native languages. Once these criteria were decided upon, each of the four team members reached out to correspondents withing their network to gather feedback. Although we were not sure how this would impact the final result at the start of the experiment, some interesting results have come out of it, which will be elaborated upon further, in other sections.
 
 *A majority of participants responded to the form positively, some even appreciating the diversity of the music and going the extra step of adding a few of the selections into their personal playlists*
@@ -207,6 +207,10 @@ Used_songs <- data.frame (
 )
 knitr::kable(Used_songs)
 ```
+Column {data-width=250}
+--------------------------------------------------
+<iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="530" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
 Participants {data-navmenu=Methodology}
 =============================================================
 
@@ -249,9 +253,7 @@ The pie chart is a distribution of participants who have at least full professio
 
 ##### Age-gender distribution
 The histogram shows the distribution of the participants in terms of age and gender. Most participants were female followed by males then non-binary and, lastly, there was one person categorised as 'other'. The participants were on average X years old and high school graduates. 
-Column {data-width=250}
---------------------------------------------------
-<iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="530" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
 
 Valence {data-navmenu=Results}
 ===============================================
