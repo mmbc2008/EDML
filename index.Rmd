@@ -4,7 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: sandstone
-    # self_contained: false
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -100,9 +100,9 @@ Map with number of participants per country
 
 ### Songs
 Example of experiment with song snippet:
-```{r}
-# <iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-```
+
+<iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
 
 Column {.sidebar data-width=350}
 --------------------------------------------------
@@ -299,18 +299,41 @@ The distribution of participants who have at least full professional proficiency
 
 Note. Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
 
-Likeability
+Enjoy
 ====================================================
 ```{r}
 lik_fam <- data.frame(
-  familiarity = c(DSEML_results[["familiar_E_low"]], DSEML_results[["familiar_D_mid"]], DSEML_results[["familiar_H_high"]], DSEML_results[["familiar_M_low"]]),
-  likeability = c(DSEML_results[["enjoy_E_low"]], DSEML_results[["enjoy_D_mid"]], DSEML_results[["enjoy_H_high"]], DSEML_results[["enjoy_M_low"]]),
-  language = c("English", "Dutch", "Hindi", "Mandarin"),
-  valence = c(0.206, 0.571, 0.802, 0.206)
+  familiar = c(mean(DSEML_results$familiar_E_low),               mean(DSEML_results$familiar_E_mid), 
+mean(DSEML_results$familiar_E_high),
+mean(DSEML_results$familiar_D_low),
+mean(DSEML_results$familiar_D_mid),
+mean(DSEML_results$familiar_D_high),
+mean(DSEML_results$familiar_H_low),
+mean(DSEML_results$familiar_H_mid),
+mean(DSEML_results$familiar_H_high),
+mean(DSEML_results$familiar_M_low),
+mean(DSEML_results$familiar_M_mid),
+mean(DSEML_results$familiar_M_high)),
+  enjoyable = c(mean(DSEML_results$enjoy_E_low),
+                  mean(DSEML_results$enjoy_E_mid),
+                  mean(DSEML_results$enjoy_E_high),
+                  mean(DSEML_results$enjoy_D_low),
+                  mean(DSEML_results$enjoy_D_mid),
+                  mean(DSEML_results$enjoy_D_high),
+                  mean(DSEML_results$enjoy_H_low),
+                  mean(DSEML_results$enjoy_H_mid),
+                  mean(DSEML_results$enjoy_H_high),
+                  mean(DSEML_results$enjoy_M_low),
+                  mean(DSEML_results$enjoy_M_mid),
+                  mean(DSEML_results$enjoy_M_high)),
+  language = c("English", "English", "English", "Dutch", "Dutch","Dutch","Hindi", "Hindi","Hindi", "Mandarin", "Mandarin", "Mandarin"),
+  valence = c(0.206, 0.571, 0.802, 0.206, 0.571, 0.802, 0.206, 0.571, 0.802, 0.206, 0.571, 0.800)
   )
-ggplot(lik_fam, aes(x=familiarity, y=likeability, size = valence, color = language)) +
-    geom_point(alpha=0.7) +
-    scale_size(range = c(0, 1), name="Population (M)")
+
+ggplot(lik_fam, aes(x=familiar, y=enjoyable, size = valence, color = language)) +
+    geom_point(alpha=0.5) +
+    scale_size(range = c(3, 12), name="Valence") +
+  scale_fill_manual(values=c("#4BC5BA", "#7D4BC5", "#C54B56", "#93C54B"))
 ```
 
 Songs
