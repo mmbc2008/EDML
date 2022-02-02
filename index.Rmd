@@ -107,17 +107,17 @@ Map with number of participants per country
 ### Songs
 **Listen to the following songs:**
 
-A Mandarin song with high valence:
+A Hindi song with low valence:
 
-<iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe src="https://open.spotify.com/embed/track/2kLFzLJgHtreNbNlbVzQy4?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 A Dutch song with mid valence:
 
 <iframe src="https://open.spotify.com/embed/track/11iIeclbEWUhkmLArE9Hr0?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-A Hindi song with low valence:
+A Mandarin song with high valence:
 
-<iframe src="https://open.spotify.com/embed/track/2kLFzLJgHtreNbNlbVzQy4?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 Did you notice the differences in happiness between the songs? Did you enjoy the songs whether you can understand the language or not? we looked into whether the perceived happiness (or valence) level differs between a foreign language and one's native language. This was done by asking questions like:
 
@@ -171,10 +171,10 @@ Column {data-width=450}
 ### Song data
 ```{r}
 Used_songs <- data.frame (
-  Title = c("Mojito", "Leef nu het kan", "Walk of life", "Mummy Nu Pasand (From 'Jai Mummy Di')", "Kuan Shu", "Respect", "Don't look back in anger", "Jagga Jiteya", "Ai De Jiu Shi Ni", "Treur niet (Ode aan het leven)", "Maybe tomorrow", "Shubhaarambh"),
-  Artist = c("Jay Chou", "Jan Smit", "Dire Straits", "Sunanda Sharma, Tanishjk Bagchi", "Y2j", "Tino Martin", "Oasis", "Daler Mehndi, Dee MC, Shashwat Sachdev", "Leehom Wang", "Diggy Dex, JW Roy", "Stereophonics", "Amit Trivedi, Shruti Pathak, Divya Kumar"),
+  Title = c("Kuan Shu", "Respect", "Don't look back in anger", "Jagga Jiteya", "Ai De Jiu Shi Ni", "Treur niet (Ode aan het leven)", "Maybe tomorrow", "Shubhaarambh", "Mojito", "Leef nu het kan", "Walk of life", "Mummy Nu Pasand (From 'Jai Mummy Di')"),
+  Artist = c("Y2j", "Tino Martin", "Oasis", "Daler Mehndi, Dee MC, Shashwat Sachdev", "Leehom Wang", "Diggy Dex, JW Roy", "Stereophonics", "Amit Trivedi, Shruti Pathak, Divya Kumar","Jay Chou", "Jan Smit", "Dire Straits", "Sunanda Sharma, Tanishjk Bagchi"),
   Language = c("Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi"),
-  Valence = c(0.800, 0.802, 0.802, 0.802, 0.206, 0.206, 0.206, 0.206, 0.571, 0.571, 0.571, 0.571)
+  Valence = c(0.206, 0.206, 0.206, 0.206, 0.571, 0.571, 0.571, 0.571, 0.800, 0.802, 0.802, 0.802)
 )
 knitr::kable(Used_songs)
 ```
