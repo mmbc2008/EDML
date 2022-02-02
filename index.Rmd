@@ -4,6 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: sandstone
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -100,32 +101,6 @@ ggplot(DSEML_results, aes(x=age, fill=factor(gender))) +
 ### Countries
 Map with number of participants per country
 ```{r}
-library(ggplot2)
-library(tidyverse)
-library(dplyr)
-library(tidyr)
-
-results = read.csv2("/Users/mylene/EDML/Cassowary/country_text.csv")
-
-map_data <- map_data("world")
-
-map_data <- left_join(map_data, results, by="region")
-
-
-map1 <- ggplot(map_data, aes(x = long, y = lat, group = group)) + geom_polygon(aes(fill = Population_Dispersion), color = "black")
-map1
-
-map2 <- map1 + scale_fill_gradient(name = "No of participants", low = "pink", high = "purple", na.value = "lightblue") +
-    theme(axis.text.x = element_blank(),
-          axis.text.y = element_blank(),
-          axis.ticks = element_blank(),
-          axis.title.y = element_blank(),
-          axis.title.x = element_blank(),
-          rect = element_blank())
-map2
-
-
-
 ```
 
 
@@ -161,12 +136,17 @@ Last year’s Spotify Wrapped revealed that the top three globally most streamed
 
 Taking advantage of the research group’s diverse cultural backgrounds, an online experiment was designed to investigate the effect of one’s native language on the perception of mood in songs. Native Dutch, Mandarin, Hindi and English speakers were the target populations of this study. For each language, 3 songs were selected according to the valence endpoint values of Spotify API - one with low valence (0.2), one with middle valence (0.5) and one with high valence (0.8). Songs with low valence values represented songs with a sad mood, whereas songs with high valence values represented songs with a happy mood. Songs with middle valence values represented neutral songs that are neither sad nor happy. In total, 12 songs were selected for the experiment. Participants were exposed to 15-second snippets of all 12 songs and rated their perception of the mood (positive vs negative) in the songs.
 
-Theory
+Background
 ===============================================
 
 Column 
 --------------------------------------------------
-### Background
+### Motivation
+Our team consists of four members, namely Hannah, Mylène, Subu and Yili. While brainstorming for a topic for our project, it came to our attention that each of us speaks a different native language - Hannah is a native Dutch speaker, Mylène is a native English speaker, Subu is a native Hindi speaker, and Yili is a native Mandarin speaker. Inspired by this cultural diversity that is unique to our team, we became curious about how listeners who speak different native languages perceive music. Consequently, this research focused on the four populations of native speakers that each member of our team was a part of. 
+
+Based on our common interest in the area of music cognition within the domain of music information retrieval (MIR), we decided to focus on studying emotion perception in music. Combined with our interest in cross-cultural differences, we formulated the following research question: how differently do people perceive songs in a non-native language compared to songs in their native language? 
+
+Previous research have found evidence that basic emotions in Western music [(Fritz et al., 2009)](https://www-sciencedirect-com.proxy.uba.uva.nl/science/article/pii/S0960982209008136) and pop music [(Lee et al., 2021)](https://arxiv.org/ftp/arxiv/papers/2108/2108.00768.pdf) are recognizable across cultures. However, to the best of our knowledge, no research has studied cross-cultural differences in perceived emotion in music comparing native Dutch, Hindi and Mandarin speakers with native English speakers. Our research contributes to literature by addressing this knowledge gap. The findings of our study could also be interesting for music marketers who would like to gain consumer insight into how listeners perceive songs in their native language versus songs that are in a non-native language. 
 
 Column 
 --------------------------------------------------
@@ -189,7 +169,7 @@ Songs {data-navmenu=Methodology}
 Column {.sidebar data-width=300}
 ---------------------------------------------------
 ### Selection process
-Due to the difficulty in directly comparing valence with the happiness, we resorted to selecting 3 levels of valence values (low, mid and high). The songs were chosen from four playlists, one per language, of over 120 songs, to find 4 with the same valence. Then we put these 4 songs, and their different levels in a randomized order where participants were asked to rate them in a random order. To minimize sound fatigue and keep respondents alert, we chose to sample 30 seconds of music from each song from its 2nd chorus verse, in order to encapsulate the essence of the various songs. 
+Due to the difficulty in directly comparing valence with the happiness, we resorted to selecting 3 levels of valence values (low, mid and high). The songs were chosen from four playlists, one per language, of over 120 pop songs, to find 4 with the same valence. Then we put these 4 songs, and their different levels in a randomized order where participants were asked to rate them in a random order. To minimize sound fatigue and keep respondents alert, we chose to sample 30 seconds of music from each song from its 2nd chorus verse, in order to encapsulate the essence of the various songs. 
 
 Column {data-width=450}
 --------------------------------------------------
@@ -291,7 +271,7 @@ The pie chart is a distribution of participants who have at least full professio
 **Note.** Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
 
 ##### Age-gender distribution
-The histogram shows the distribution of the participants in terms of age and gender. Most participants were female followed by males then non-binary and, lastly, there was one person categorised as 'other'. The participants were on average X years old and high school graduates. 
+The histogram shows the distribution of the participants in terms of age and gender. Most participants were female followed by males then non-binary and, lastly, there was one person categorised as 'other'. The participants were on average around 27 years old and high school graduates. 
 
 
 Valence {data-navmenu=Results}
@@ -311,7 +291,7 @@ On the right, the total perceived valence can be seen. It seems that in general:
 
 * Participants mostly agreed on the perceived valence in songs regardless of language
 
-* Hindi songs were consistently rated high in perceived valence regardless of its assigned numerical rating on Spotify
+* Hindi songs were consistently rated high in perceived valence regardless of its valence rating on Spotify
 
 * People find it difficult to differentiate between sad and neutral songs, they seem to only be aware of above average levels of happiness in songs regardless of language
 
@@ -324,6 +304,7 @@ The last four plots on the right show the perceived valences of native speakers 
 
 * Participants were better able to perceive the valence in Dutch and Mandarin songs (according to SPotify API) than Hindi and English songs, regardless of whether the songs were performed in their native language or not
 
+* Perceived valence was the most similarly rated between native and non-native speakers of English and Dutch
 
 Column {.tabset}
 -----------------------------------------------------------------------
@@ -470,7 +451,7 @@ Enjoyment and Familiarity {data-navmenu=Results}
 Column {data-width=350}
 ---------------------------------------------------
 ### Comparing enjoyment to familiarity
-The graph on the right shows that there is a slight correlation between the familiarity and the enjoyment of a song; the more familiar the more enjoyable. Furthermore, it appears that the Dutch songs were the least familiar among our participants. All Dutch and Hindi songs were found to be the least enjoyable, despite the differences in valence. It is remarkable that the Mandarin songs are almost as familiar and enjoyable as the English songs. This might be due to the fact that Mandarin is often perceived as a softer and therefore more pleasant language. Less surprising is the fact that the English songs were the most familiar and the most enjoyed, since all participants could speak English to at least some degree considering that the survey was written in English. However, it is interesting to see that the English song with the lowest valence was the most enjoyed, which could be explained by its high familiarity, since the perceived valence was low (see valence results). 
+The graph on the right shows that there is a slight correlation between the familiarity and the enjoyment of a song; the more familiar, the more enjoyable. The most enjoyed songs were also the most familiar songs, namely the low valence English song, high valence Mandarin song, and high valence English song. Furthermore, it appears that the Dutch songs were the least familiar among our participants. All Dutch and Hindi songs were found to be the least enjoyable, regardless of the level of valence. It is remarkable that the Mandarin songs are almost as familiar and enjoyable as the English songs. Less surprising is the fact that the English songs were the most familiar and the most enjoyed, since all participants could speak English to at least some degree considering that the survey was written in English. However, it is interesting to see that the English song with the lowest valence was the most enjoyed, which could be explained by its high familiarity, since the perceived valence was low (see valence results). 
 
 Column {data-width=650}
 ----------------------------------------------------
@@ -515,14 +496,23 @@ Conclusion
 Column 
 ---------------------------------------------------
 ### Discussion and Conclusion
+The main goal of this study was to investigate the effect of native language on the perception of emotion in music. Additionally, the roles of familiarity and enjoyment in the perception of emotion in music were explored. The findings of the study revealed three key insights. First, our results indicated that being a native speaker of a language does not affect how a listener perceives emotions in songs. In fact, native and non-native speakers seem to mostly agree on the valence of songs. This finding concurs with previous research (Lee et al., 2021) that found that emotions in pop songs may be universally recognizable to listeners regardless of cultural background. Thus, it is likely that emotions in pop songs are universally recognizable to listeners regardless of native language. 
 
+Second, the level of valence has no effect on listener enjoyment. Although it may seem counterintuitive, happy songs are not necessarily more enjoyable. Instead, listeners could enjoy listening to sad songs (with low valence) more. This finding could be related to the concept of hedonism and eudaimonism. While the hedonistic view equates happiness with pleasure, the eudaimonic view equates happiness with feelings of meaningfulness obtained from solving complex human problems. For example, a sad song about grieving could be enjoyable because it helps its listeners make sense of their own grieving experience. This could help explain why listeners enjoy listening to sad songs as much as happy songs, sometimes even more. 
+
+Third, the more familiar a song is, the more enjoyable it is regardless of language and valence, and vice versa. This could be explained by the mere-exposure effect, which proposes that people develop a preference for something because they are more familiar with it. Furthermore, it is likely that one will intend to consume a piece of enjoyable music more frequently, and consequently develop a familiarity with it. 
+
+Fourth, it appears that the Spotify API algorithm is not accurately predicting valence values of Hindi songs, compared to songs in the other languages studied in this study. Native Hindi speakers in our study rated their perceived valence remarkably different from the algorithm, suggesting that Spotify API may be less sophisticated in capturing human perception of Hindi songs. 
+
+In conclusion, the present study provides some scientific and practical implications. While research in language and emotions in music is abundant, few have explored the role of native language in music perception. The findings of this study builds upon previous research and attempts to bridge this knowledge gap. Additionally, the findings of this study could help inform decisions in music marketing. For example, the genre "world music" that was created due to concerns that foreign music may be difficult to market because of language barriers may be irrelevant. Although a listener may not understand the lyrics of a song performed in a non-native language, our results show that they are capable of perceiving the emotions and enjoying the song as much as native speakers of the language. Therefore, based on the results of this study, it is recommended that music marketers rethink strategies for marketing songs in a foreign language. 
 
 Column
 ----------------------------------------------------
-### Future work
-There is still room for improvement and therefore we will discuss some directions for future research based on the findings in this report.
-Firstly, the participants were asked to rate the songs on a happiness scale instead of valence, which means that the results might be biased (low valence songs were sometimes rated the same as mid valence). Moreover, there might have been other kinds of biases which could be avoided in future research. 
+### Limitations and suggestions for future research
+Of course, this study is limited in some ways. First, the sample of songs consisted of songs from different decades (1985-2020), meaning that some songs were more recent than others. As a result, we cannot be sure if the variance in the dependent variables was solely caused by the presence or absence of a native language or by differences in song arrangement (or other song characteristics) over the years. Thus, it is recommended that future research control for song characteristics to reach more conclusive results. 
 
-Something that was beyond the scope of our project is the comparison of western and non-western songs directly (Dutch/English - Hindi/Mandarin). Does one generally sound more happy? Furthermore, this could be extended on by looking at the Korean Pop songs, which are popular nowadays all over the world. What makes these songs so enticing?
+Second, the sample of participants who are native Hindi speakers may not be large enough, making the related results less valid compared to those related to the other groups of participants. This was due to difficulties in recruiting native Hindi speakers, as the languages spoken in India are diverse and most Indians identify English as their native language. Future research could approach this problem by hiring research assitants in the local area. 
 
-Lastly, a similar experiment could be conducted based on a different cultural element than songs, such as paintings or dance styles. Would similar results be found when its not about songs but other art forms?
+Based on the findings of this study, a suggestion for future research would be to replicate this study using songs of a different genre. As it is suggested that pop songs may have intrinsically similar characteristics that are universally recognizable, comparing songs of a different genre (e.g. Rock, Rap, etc.) in different languages may yield interesting results that support or contradict the results of this study. For instance, it could be that genre characteristics affect perceived valence more than song lyrics. 
+
+Lastly, future research could attempt to investigate the role of native language on the perception of more complex emotions in music, such as grief and regret. Unlike basic emotions (e.g. happiness, sadness, etc.), complex emotions can vary across cultures in terms of appearance and require more cognitive processing [(Brogaard, 2018)](https://www.psychologytoday.com/intl/blog/the-superhuman-mind/201806/basic-and-complex-emotions). It is possible that the lyrics in songs can be cues to help listeners with the cognitive processing of complex emotions, such that native speakers of the language would be able to more easily perceive the complex emotions in the song than non-native speakers. Since complex emotions may manifest themselves differently across cultures, this could also be reflected in the lyrics of songs in different languages. Therefore, native language will potentially have an effect on the perception of complex emotions in music. 
