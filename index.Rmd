@@ -105,22 +105,26 @@ Map with number of participants per country
 
 
 ### Songs
-**Listen to the following song:**
+**Listen to the following songs:**
+A Mandarin song with high valence:
 
 <iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
+A Dutch song with mid valence:
+
 <iframe src="https://open.spotify.com/embed/track/11iIeclbEWUhkmLArE9Hr0?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
+A Hindi song with low valence:
+
 <iframe src="https://open.spotify.com/embed/track/2kLFzLJgHtreNbNlbVzQy4?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+Did you notice the differences in happiness between the songs? Did you enjoy the songs whether you can understand the language or not? we looked into whether the perceived happiness (or valence) level differs between a foreign language and one's native language. This was done by asking questions like:
 
 *Did you enjoy listening to this song? *
 
 *How happy or sad did this song make you feel?*
 
 *Did you already know this song before listening?*
-
-
-These are some questions that were included in our survey, which we asked participants in order to get a better insight into the perceived emotion in music performed in a foreign language compared to those in a native language.
 
 
 Column {.sidebar data-width=350}
