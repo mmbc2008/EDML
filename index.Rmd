@@ -1,5 +1,5 @@
 ---
-title: "Languages and Music Perception"
+title: "Native Language and Perceived Emotion in Music"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
@@ -47,6 +47,11 @@ valueBox(songs,
          color =  "#7D4BC5")
 ```
 
+Row {Data-height=50}
+----------------------------------------------------
+
+#### **How does the language of lyrics in music influence people’s perception of valence?**
+
 Column {.tabset}
 ---------------------------------------------------------
 ### Main results
@@ -84,13 +89,13 @@ valence[12, 1] = "Mandarin"
 
 ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Average Perceived Valence") +
-scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56"))
+scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
 ```
 
 ### Participants
 ```{r}
 ggplot(DSEML_results, aes(x=age, fill=factor(gender))) +
-  geom_histogram(color='black', alpha=1) + labs(fill='Gender', title = "Distribution of age and gender of participants")
+  geom_histogram(color='black', alpha=1) + labs(fill='Gender', title = "Distribution of age and gender of participants") +  scale_fill_manual(name="Gender",labels=c("Male", "Female", "Non-binary", "Other"), values = c("#C54B56", "#4BC5BA", "#93C54B", "#7D4BC5")) + labs(x="Age", y="Number of Participants")
 ```
 
 ### Countries
@@ -126,9 +131,27 @@ map2
 
 
 ### Songs
-Example of experiment with song snippet:
+**Listen to the following songs:**
 
-<iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+A Hindi song with low valence:
+
+<iframe src="https://open.spotify.com/embed/track/2kLFzLJgHtreNbNlbVzQy4?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+A Dutch song with mid valence:
+
+<iframe src="https://open.spotify.com/embed/track/11iIeclbEWUhkmLArE9Hr0?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+A Mandarin song with high valence:
+
+<iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+Did you notice the differences in happiness between the songs? Did you enjoy the songs whether you can understand the language or not? we looked into whether the perceived happiness (or valence) level differs between a foreign language and one's native language. This was done by asking questions like:
+
+*Did you enjoy listening to this song? *
+
+*How happy or sad did this song make you feel?*
+
+*Did you already know this song before listening?*
 
 
 Column {.sidebar data-width=350}
@@ -139,20 +162,178 @@ Last year’s Spotify Wrapped revealed that the top three globally most streamed
 
 Taking advantage of the research group’s diverse cultural backgrounds, an online experiment was designed to investigate the effect of one’s native language on the perception of mood in songs. Native Dutch, Mandarin, Hindi and English speakers were the target populations of this study. For each language, 3 songs were selected according to the valence endpoint values of Spotify API - one with low valence (0.2), one with middle valence (0.5) and one with high valence (0.8). Songs with low valence values represented songs with a sad mood, whereas songs with high valence values represented songs with a happy mood. Songs with middle valence values represented neutral songs that are neither sad nor happy. In total, 12 songs were selected for the experiment. Participants were exposed to 15-second snippets of all 12 songs and rated their perception of the mood (positive vs negative) in the songs.
 
+Theory
+===============================================
+
+Column 
+--------------------------------------------------
+### Background
+
+Column 
+--------------------------------------------------
+### Article Review: [Cross-Cultural Mood Perception In Pop Songs And Its Alignment With Mood Detection Algorithms (Lee et al., 2021)](https://arxiv.org/ftp/arxiv/papers/2108/2108.00768.pdf)
+
+How differently do people perceive songs in a non-native language compared to songs in their native language? A recent study led by Lee et al. (2021) provides some insights into this question. 
+
+Putting their focus on mood perception in music specifically, Lee et al. (2021) examined three research questions in their study: first, to what extent people with different cultural backgrounds perceive mood in music differently; second, to what extent people within and between cultures agree on their perception of mood in music; and third, to what extent mood detection algorithms in Music Information Retrieval (MIR) accurately reflect human judgement, and whether a cultural bias can be found in the algorithm.
+
+As an attempt to answer the research questions, the researchers analyzed three independent pools of participants from three countries (namely Brazil, South Korea and the US) that speak three different languages (namely Portuguese, Korean and English). The researchers’ explanation for selecting these populations is simple but rather convincing - there is evidence indicating that unique clusters in the West, Asia, and Latin America are formed due to shared music interests (notice how this is consistent with the top three globally most streamed artists on Spotify as well!). 
+
+The researchers’ choice of manually compiling a novel dataset of pop songs as experiment stimuli is refreshing, as most previous research (e.g. Eerola & Vuoskoski, 2011) utilized musical pieces that are known to evoke specific emotions. This makes the experiment setting feel more similar to real-world experiences, improving the external validity of the research findings. 
+
+A key finding suggests that emotions in pop songs may be universally recognizable to audiences regardless of cultural background, even when the song is unfamiliar. This statement was inferred based on the finding that listeners within and across cultures highly agreed on the presence of mood attributes such as danceable, energy, sad, cheerful and electronic in songs.
+
+Another interesting result is the researcher’s conclusion that there is no cultural bias in the algorithms of Spotify API. Initially, the researchers hypothesized that the algorithm that was developed in the West would align better with participants in the US; however, statistical analyses revealed that there were no significant differences between the algorithm’s judgement and those of participants across cultures. Although this finding seems promising at first glance, the researchers’ arguments may not be robust enough to make such a conclusion, especially since the study did not include other cultures such as the African cultures and other Asian cultures. 
+
+Songs {data-navmenu=Methodology}
+===============================================
+Column {.sidebar data-width=300}
+---------------------------------------------------
+### Selection process
+Due to the difficulty in directly comparing valence with the happiness, we resorted to selecting 3 levels of valence values (low, mid and high). The songs were chosen from four playlists, one per language, of over 120 songs, to find 4 with the same valence. Then we put these 4 songs, and their different levels in a randomized order where participants were asked to rate them in a random order. To minimize sound fatigue and keep respondents alert, we chose to sample 30 seconds of music from each song from its 2nd chorus verse, in order to encapsulate the essence of the various songs. 
+
+Column {data-width=450}
+--------------------------------------------------
+### Song data
+```{r}
+Used_songs <- data.frame (
+  Title = c("Kuan Shu", "Respect", "Don't look back in anger", "Jagga Jiteya", "Ai De Jiu Shi Ni", "Treur niet (Ode aan het leven)", "Maybe tomorrow", "Shubhaarambh", "Mojito", "Leef nu het kan", "Walk of life", "Mummy Nu Pasand (From 'Jai Mummy Di')"),
+  Artist = c("Y2j", "Tino Martin", "Oasis", "Daler Mehndi, Dee MC, Shashwat Sachdev", "Leehom Wang", "Diggy Dex, JW Roy", "Stereophonics", "Amit Trivedi, Shruti Pathak, Divya Kumar","Jay Chou", "Jan Smit", "Dire Straits", "Sunanda Sharma, Tanishjk Bagchi"),
+  Language = c("Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi"),
+  Valence = c(0.206, 0.206, 0.206, 0.206, 0.571, 0.571, 0.571, 0.571, 0.800, 0.802, 0.802, 0.802)
+)
+knitr::kable(Used_songs)
+```
+Column {data-width=250}
+--------------------------------------------------
+<iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="530" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+Survey {data-navmenu=Methodology}
+===============================================
+Column {.sidebar data-width=400}
+--------------------------------------------------
+
+##### Procedure
+To conduct this experiment, a set of target audience parameters were decided upon. These included personal factors such as age, gender, level of education and nationality. Furthermore, there was asked about their native language and if participants had knowledge of other languages, as well as familiarity, or listening habits in regard to music that falls outside the reach of their native languages. Once these criteria were decided upon, each of the four team members reached out to correspondents withing their network to gather feedback. Although we were not sure how this would impact the final result at the start of the experiment, some interesting results have come out of it, which will be elaborated upon further, in other sections.
+
+*A majority of participants responded to the form positively, some even appreciating the diversity of the music and going the extra step of adding a few of the selections into their personal playlists*
+
+Once the participants were sent the form, they were given a snippet of one of the 12 selected tracks, after which they were asked to rate the “happiness” of the song on a scale of 0-6, along with answering questions in regards to their familiarity with the foreign languages (English, Mandarin, Hindi and Dutch). 
+
+Column (data-width=300)
+--------------------------------------------------
+##### General questions of the Survey:
+```{r}
+Questions <- data.frame (
+  Question = c("What is your age in years? e.g. 22", "What gender do you identify the most with?", "What country are you from?", "What is the highest level of education that you have completed?", "How fluent are you in Dutch/English/Hindi/Mandarin", "How often do you listen to music in a non-native language?"),
+  Scale = c("Years", "M/F/N-B/Other", "List of Countries", "Selected Choice", "No proficiency- Native proficiency", "Never - Always")
+)
+knitr::kable(Questions)
+```
+##### Questions after listening to each song:
+```{r}
+SQuestions <- data.frame (
+  Question = c("How much did you enjoy listening to the song?", "How would you describe the song that you have just heard?", "How familiar are you with this song?"),
+  Scale = c("Not at all - A great deal", "Sad - Happy", "Not familiar at all - Extremely familiar")
+)
+knitr::kable(SQuestions)
+```
+
+Column (data-width=300)
+--------------------------------------------------
+#### Problems Encountered
+
+* While the spotify API provides its information in decimal points, due to a difficulty in direct comparison between Valence points by spotify and a scale rating by users, we decided to select tracks with the same valence points, and compare them to each other.
+
+* Moreover, due to happiness being subjective, based on past personal experiences, we needed to account for a lack of objectivity within our results.
+
+* Furthermore, we did not take into account the fact that a lot of Indian audiences consider their native language to be English instead of Hindi. This also resulted in a lower amount of participants with Hindi as a native language as compared to the English native speakers specifically. 
+
+
+
+Participants {data-navmenu=Methodology}
+=============================================================
+
+Column {.tabset}
+----------------------------------------------------
+
+### Language distribution
+
+```{r}
+Dutch = length(which(DSEML_results$dutch == 5)) + length(which(DSEML_results$dutch == 6))
+English = length(which(DSEML_results$english == 5)) + length(which(DSEML_results$english == 6))
+Hindi = length(which(DSEML_results$hindi == 5)) + length(which(DSEML_results$hindi == 6))
+Mandarin = length(which(DSEML_results$mandarin == 5)) + length(which(DSEML_results$mandarin == 6))
+filtering_other <- filter(DSEML_results, dutch != 5, dutch != 6, english != 5, english != 6, hindi != 5, hindi != 6, mandarin !=5, mandarin != 6)
+Other = length(filtering_other$dutch)
+pie_chart <- data.frame("languages" = c('Dutch', 'English', 'Mandarin', 'Hindi', 'Other'), "amount" = c(Dutch, English, Mandarin, Hindi, Other))
+ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) + geom_text(aes(label = paste0(amount)), position = position_stack(vjust=0.5)) +
+  labs(x = NULL, y = NULL, fill = NULL) +
+scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56", "#656766"))
+```
+
+### Age-gender distribution
+```{r}
+ggplot(DSEML_results, aes(x=age, fill=factor(gender))) +
+  geom_histogram(color='black', alpha=1) + labs(fill='Gender', title = "Distribution of age and gender of participants") +  scale_fill_manual(name="Gender",labels=c("Male", "Female", "Non-binary", "Other"), values = c("#C54B56", "#4BC5BA", "#93C54B", "#7D4BC5")) + labs(x="Age", y="Number of Participants")
+```
+
+Column
+-------------------------------------------------------
+### Participant statistics
+
+In order to give some insight about the experiment, both graphs on the left provide some basic information about the **103** participants.
+
+##### Language Distribution
+The pie chart is a distribution of participants who have at least full professional proficiency in the languages tested in the experiment. 
+
+**Note.** Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
+
+##### Age-gender distribution
+The histogram shows the distribution of the participants in terms of age and gender. Most participants were female followed by males then non-binary and, lastly, there was one person categorised as 'other'. The participants were on average X years old and high school graduates. 
+
 
 Valence {data-navmenu=Results}
 ===============================================
 
-Column
------------------------------------------------------------------------
-
-### Average perceived valences
-
 Column {.tabset}
 -----------------------------------------------------------------------
 
-### Explanation
-Comparing the Spotify valences (high, low, mid) to the perceived valence, etc.
+#### Valence as a measure for happiness
+Valence is a rating that is given by sound engineers at Spotify which measures the positiveness of a song. High valence values indicate that a song is happier in nature, while now valence indicates sadder songs. To measure the “happiness” of a song, spotify data scientists have an agreed upon metric of what happy music sounds like. However according to Spotify a large amount of this measurement is also done by AI technology; therefore making it unclear exactly what the indicators of a happy song are. Spotify issues a measurement of valence in a decimal system, with values between 0 to 1 going up to three decimal points. 
+
+Psychologists on the other hand measure valence as the probability of a thing making people experience positive emotions.
+
+
+### General Observations
+On the right, the total perceived valence can be seen. It seems that in general:
+
+* Participants mostly agreed on the perceived valence in songs regardless of language
+
+* Hindi songs were consistently rated high in perceived valence regardless of its assigned numerical rating on Spotify
+
+* People find it difficult to differentiate between sad and neutral songs, they seem to only be aware of above average levels of happiness in songs regardless of language
+
+### Native versus non-native
+The last four plots on the right show the perceived valences of native speakers compared to those of non-native speakers. It seems that in general:
+
+* With the exception of Hindi songs, native speakers and non-native speakers did not differ much in their perceptions of valence in songs
+
+* Native Hindi speakers were less accurate than non-native speakers in perceiving the valence in Hindi songs according to Spotify API
+
+* Participants were better able to perceive the valence in Dutch and Mandarin songs (according to SPotify API) than Hindi and English songs, regardless of whether the songs were performed in their native language or not
+
+
+Column {.tabset}
+-----------------------------------------------------------------------
+### Average Perceived Valence
+```{r}
+ggplot(valence, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
+geom_bar(position="dodge", stat="identity") + ggtitle("Average Perceived Valence") +
+scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
+```
 
 ### Dutch Valence
 ```{r}
@@ -184,7 +365,7 @@ Dutch_graph[6, 1] = "Non-native"
 
 ggplot(Dutch_graph, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Dutch Valence") +
-scale_fill_manual(values=c("#93C54B", "#121909"))
+scale_fill_manual(values=c("#93C54B", "#121909")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
 ```
 
 ### English Valence
@@ -217,7 +398,7 @@ English_graph[5, 1] = "Non-native"
 English_graph[6, 1] = "Non-native"
 ggplot(English_graph, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("English Valence") +
-scale_fill_manual(values=c("#4BC5BA", "#091917"))
+scale_fill_manual(values=c("#4BC5BA", "#091917")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
 ```
 
 ### Hindi Valence
@@ -249,7 +430,7 @@ Hindi_graph[5, 1] = "Non-native"
 Hindi_graph[6, 1] = "Non-native"
 ggplot(Hindi_graph, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Hindi Valence") +
-scale_fill_manual(values=c("#7D4BC5", "#100919"))
+scale_fill_manual(values=c("#7D4BC5", "#100919")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
 ```
 
 ### Mandarin Valence
@@ -281,53 +462,20 @@ Mand_graph[5, 1] = "Non-native"
 Mand_graph[6, 1] = "Non-native"
 ggplot(Mand_graph, aes(fill=Languages, y=Values, x=Valence_degree2)) + 
 geom_bar(position="dodge", stat="identity") + ggtitle("Mand Valence") +
-scale_fill_manual(values=c("#C54B56", "#19090B"))
+scale_fill_manual(values=c("#C54B56", "#19090B")) + labs(x="Valence (according to Spotify)", y="Perceived Valence")
 ```
 
-
-Participants {data-navmenu=Results}
-=============================================================
-
-Column {.tabset}
-----------------------------------------------------
-
-### Language distribution
-
-```{r}
-Dutch = length(which(DSEML_results$dutch == 5)) + length(which(DSEML_results$dutch == 6))
-English = length(which(DSEML_results$english == 5)) + length(which(DSEML_results$english == 6))
-Hindi = length(which(DSEML_results$hindi == 5)) + length(which(DSEML_results$hindi == 6))
-Mandarin = length(which(DSEML_results$mandarin == 5)) + length(which(DSEML_results$mandarin == 6))
-filtering_other <- filter(DSEML_results, dutch != 5, dutch != 6, english != 5, english != 6, hindi != 5, hindi != 6, mandarin !=5, mandarin != 6)
-Other = length(filtering_other$dutch)
-pie_chart <- data.frame("languages" = c('Dutch', 'English', 'Mandarin', 'Hindi', 'Other'), "amount" = c(Dutch, English, Mandarin, Hindi, Other))
-ggplot(pie_chart, aes(x="", y=amount, fill=languages)) +
-  geom_bar(stat="identity", width=1) +
-  coord_polar("y", start=0) + geom_text(aes(label = paste0(amount)), position = position_stack(vjust=0.5)) +
-  labs(x = NULL, y = NULL, fill = NULL) +
-scale_fill_manual(values=c("#93C54B", "#4BC5BA", "#7D4BC5", "#C54B56", "#19090B"))
-```
-
-### chart
-```{r}
-
-ggplot(DSEML_results, aes(x=age)) +
-geom_histogram(aes(y=..density..), position="identity", alpha=0.5, fill = "red")
-
-```
-
-Column
--------------------------------------------------------
-
-### Explanation of pie chart
-
-#### Figure Language Distribution
-The distribution of participants who have at least full professional proficiency in the languages tested in the experiment. 
-
-Note. Bilingual participants were counted multiple times. Participants in “Other” did not have at least full professional proficiency in any of the languages. 
-
-Enjoy
+Enjoyment and Familiarity {data-navmenu=Results}
 ====================================================
+
+Column {data-width=350}
+---------------------------------------------------
+### Comparing enjoyment to familiarity
+The graph on the right shows that there is a slight correlation between the familiarity and the enjoyment of a song; the more familiar the more enjoyable. Furthermore, it appears that the Dutch songs were the least familiar among our participants. All Dutch and Hindi songs were found to be the least enjoyable, despite the differences in valence. It is remarkable that the Mandarin songs are almost as familiar and enjoyable as the English songs. This might be due to the fact that Mandarin is often perceived as a softer and therefore more pleasant language. Less surprising is the fact that the English songs were the most familiar and the most enjoyed, since all participants could speak English to at least some degree considering that the survey was written in English. However, it is interesting to see that the English song with the lowest valence was the most enjoyed, which could be explained by its high familiarity, since the perceived valence was low (see valence results). 
+
+Column {data-width=650}
+----------------------------------------------------
+### Familiarity and Enjoyment
 ```{r}
 lik_fam <- data.frame(
   familiar = c(mean(DSEML_results$familiar_E_low),               mean(DSEML_results$familiar_E_mid), 
@@ -360,29 +508,22 @@ mean(DSEML_results$familiar_M_high)),
 ggplot(lik_fam, aes(x=familiar, y=enjoyable, size = valence, color = language)) +
     geom_point(alpha=0.5) +
     scale_size(range = c(3, 12), name="Valence") +
-  scale_fill_manual(values=c("#4BC5BA", "#7D4BC5", "#C54B56", "#93C54B"))
+  scale_fill_manual(values=c("#4BC5BA", "#7D4BC5", "#C54B56", "#93C54B")) + labs(title = "Enjoyment compared to Familiarity with language and valence",x="Average Familiarity of the Song", y="Average Enjoyment of the Song")
 ```
 
-Songs
+Conclusion
 ===============================================
-Column {.sidebar data-width=300}
+Column 
 ---------------------------------------------------
-### Selection process
+### Discussion and Conclusion
 
-Column {data-width=450}
---------------------------------------------------
-### Song data
-```{r}
-Used_songs <- data.frame (
-  Title = c("Mojito", "Leef nu het kan", "Walk of life", "Mummy Nu Pasand (From 'Jai Mummy Di')", "Kuan Shu", "Respect", "Don't look back in anger", "Jagga Jiteya", "Ai De Jiu Shi Ni", "Treur niet (Ode aan het leven)", "Maybe tomorrow", "Shubhaarambh"),
-  Artist = c("Jay Chou", "Jan Smit", "Dire Straits", "Sunanda Sharma, Tanishjk Bagchi", "Y2j", "Tino Martin", "Oasis", "Daler Mehndi, Dee MC, Shashwat Sachdev", "Leehom Wang", "Diggy Dex, JW Roy", "Stereophonics", "Amit Trivedi, Shruti Pathak, Divya Kumar"),
-  Language = c("Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi", "Mandarin", "Dutch", "English", "Hindi"),
-  Valence = c(0.800, 0.802, 0.802, 0.802, 0.206, 0.206, 0.206, 0.206, 0.571, 0.571, 0.571, 0.571)
-)
-knitr::kable(Used_songs)
-```
-Column {data-width=250}
---------------------------------------------------
-```{r}
-# <iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-```
+
+Column
+----------------------------------------------------
+### Future work
+There is still room for improvement and therefore we will discuss some directions for future research based on the findings in this report.
+Firstly, the participants were asked to rate the songs on a happiness scale instead of valence, which means that the results might be biased (low valence songs were sometimes rated the same as mid valence). Moreover, there might have been other kinds of biases which could be avoided in future research. 
+
+Something that was beyond the scope of our project is the comparison of western and non-western songs directly (Dutch/English - Hindi/Mandarin). Does one generally sound more happy? Furthermore, this could be extended on by looking at the Korean Pop songs, which are popular nowadays all over the world. What makes these songs so enticing?
+
+Lastly, a similar experiment could be conducted based on a different cultural element than songs, such as paintings or dance styles. Would similar results be found when its not about songs but other art forms?
