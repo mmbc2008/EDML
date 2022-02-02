@@ -4,7 +4,6 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: sandstone
-    self_contained: true
 ---
 
 ```{r setup, include=FALSE}
