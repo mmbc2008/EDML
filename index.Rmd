@@ -145,7 +145,7 @@ Column
 
 Column 
 --------------------------------------------------
-### Article Review: Cross-Cultural Mood Perception In Pop Songs And Its Alignment With Mood Detection Algorithms (Lee et al., 2021)
+### Article Review: [Cross-Cultural Mood Perception In Pop Songs And Its Alignment With Mood Detection Algorithms (Lee et al., 2021)](https://arxiv.org/ftp/arxiv/papers/2108/2108.00768.pdf)
 
 How differently do people perceive songs in a non-native language compared to songs in their native language? A recent study led by Lee et al. (2021) provides some insights into this question. 
 
@@ -445,7 +445,7 @@ Enjoyment and Familiarity {data-navmenu=Results}
 Column {data-width=350}
 ---------------------------------------------------
 ### Comparing enjoyment to familiarity
-The graph on the right shows that there is a slight correlation between the familiarity and the enjoyability of a song; the more familiar the more enjoyable. Furthermore, it appears that the Dutch songs were the least familiar among our participants. All Dutch and Hindi songs were found to be the least enjoyable, despite the differences in valence. It is remarkable that the Mandarin songs are almost as familiar and enjoyable as the English songs. This might be due to the fact that Mandarin is often perceived as a softer and therefore more pleasant language. Less surprising is the fact that the English songs were the most familiar and the most enjoyed, since all participants could speak English to at least some degree considering that the survey was written in English. However, it is interesting to see that the English song with the lowest valence was the most enjoyed, which could be explained by its high familiarity, since the perceived valence was low (see valence results). 
+The graph on the right shows that there is a slight correlation between the familiarity and the enjoyment of a song; the more familiar the more enjoyable. Furthermore, it appears that the Dutch songs were the least familiar among our participants. All Dutch and Hindi songs were found to be the least enjoyable, despite the differences in valence. It is remarkable that the Mandarin songs are almost as familiar and enjoyable as the English songs. This might be due to the fact that Mandarin is often perceived as a softer and therefore more pleasant language. Less surprising is the fact that the English songs were the most familiar and the most enjoyed, since all participants could speak English to at least some degree considering that the survey was written in English. However, it is interesting to see that the English song with the lowest valence was the most enjoyed, which could be explained by its high familiarity, since the perceived valence was low (see valence results). 
 
 Column {data-width=650}
 ----------------------------------------------------
