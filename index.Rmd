@@ -4,7 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: sandstone
-    self_contained: false
+    # self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -108,16 +108,23 @@ Map with number of participants per country
 **Listen to the following songs:**
 
 A Hindi song with low valence:
-
-<iframe src="https://open.spotify.com/embed/track/2kLFzLJgHtreNbNlbVzQy4?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+[Jagga Jiteya - Daler Mehndi, Dee MC, Shashwat Sachdev](https://open.spotify.com/track/2kLFzLJgHtreNbNlbVzQy4?si=1e14ae95c15a4c1b)
+```{r}
+#<iframe src="https://open.spotify.com/embed/track/2kLFzLJgHtreNbNlbVzQy4?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+```
 
 A Dutch song with mid valence:
-
-<iframe src="https://open.spotify.com/embed/track/11iIeclbEWUhkmLArE9Hr0?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+[Treur niet (Ode aan het leven)	- Diggy Dex, JW Roy](https://open.spotify.com/track/11iIeclbEWUhkmLArE9Hr0?si=bc19293bff1c4af9)
+```{r}
+# <iframe src="https://open.spotify.com/embed/track/11iIeclbEWUhkmLArE9Hr0?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+```
 
 A Mandarin song with high valence:
+[Mojito - Jay Chou](https://open.spotify.com/track/7BYMjh3vWnHU4IFyfZdIDO?si=c8fd0d4f529245cc)
 
-<iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+```{r}
+# <iframe src="https://open.spotify.com/embed/track/7BYMjh3vWnHU4IFyfZdIDO?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+```
 
 Did you notice the differences in happiness between the songs? Did you enjoy the songs whether you can understand the language or not? we looked into whether the perceived happiness (or valence) level differs between a foreign language and one's native language. This was done by asking questions like:
 
@@ -187,7 +194,11 @@ knitr::kable(Used_songs)
 ```
 Column {data-width=250}
 --------------------------------------------------
-<iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="530" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+[Complete playlist of the used songs](https://open.spotify.com/playlist/6iVqkit3KpSl3ixtnvV5k3?si=f77a2afed5064c50)
+
+```{r}
+# <iframe src="https://open.spotify.com/embed/playlist/6iVqkit3KpSl3ixtnvV5k3?utm_source=generator" width="100%" height="530" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+```
 
 Survey {data-navmenu=Methodology}
 ===============================================
