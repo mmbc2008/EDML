@@ -4,6 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: sandstone
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -98,7 +99,6 @@ ggplot(DSEML_results, aes(x=age, fill=factor(gender))) +
 ```
 
 ### Countries
-Map with number of participants per country
 ```{r}
 library(ggplot2)
 library(tidyverse)
@@ -113,7 +113,7 @@ map_data <- left_join(map_data, results, by="region")
 
 
 map1 <- ggplot(map_data, aes(x = long, y = lat, group = group)) + geom_polygon(aes(fill = Population_Dispersion), color = "black")
-map1
+#map1
 
 map2 <- map1 + scale_fill_gradient(name = "No of participants", low = "pink", high = "purple", na.value = "lightblue") +
     theme(axis.text.x = element_blank(),
@@ -123,9 +123,6 @@ map2 <- map1 + scale_fill_gradient(name = "No of participants", low = "pink", hi
           axis.title.x = element_blank(),
           rect = element_blank())
 map2
-
-
-
 ```
 
 
