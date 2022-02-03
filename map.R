@@ -4,7 +4,7 @@ library(tidyverse)
 library(dplyr)
 library(tidyr)
 
-results = read.csv2("/Users/mylene/EDML/Cassowary/country_text.csv")
+results = read.csv2("country_text.csv")
 
 map_data <- map_data("world")
 
