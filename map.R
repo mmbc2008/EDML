@@ -21,6 +21,7 @@ map2 <- map1 + scale_fill_gradient(name = "No of participants", low = "pink", hi
           axis.title.y = element_blank(),
           axis.title.x = element_blank(),
           rect = element_blank())
+ggsave(map2, height = 7 , width = 7 * aspect_ratio)
 map2
 
 
